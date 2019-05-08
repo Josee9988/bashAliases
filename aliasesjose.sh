@@ -1,10 +1,17 @@
 #!/bin/bash
-# SCRIPT:aliasesjose.sh
-# USAGE:./aliasesjose.sh
-# Jose Gracia
-# GITHUB: https://github.com/Josee9988/
-# If wanting to contact please mail me at: jgracia9988@gmail.com
-# Shell script that adds 'cds', 'updatef' and 'cleanf' commands in .bash_aliases file.
+#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#
+# SCRIPT:        aliasesjose.sh
+# USAGE:        ./aliasesjose.sh
+# PURPOSE:       Shell script that adds 'cd(..'s), 'updatef' and 'cleanf', 'updateff', 'extract', and 'mariadb' start/stop/status commands in .bash_aliases file.
+# TITLE:        aliasesjose.sh
+# AUTHOR:       Jose Gracia
+# VERSION:      1.5
+# NOTES:        Check that in your ~/.bashrc you have a line like: . ~/.bash_aliases which is surrounded by an if. If this is not in your linux distro add it yourself
+# BASH_VERSION: GNU bash, version 4.4.19(1)-release (x86_64-pc-linux-gnu)
+# LICENSE:      GNU General Public License v3.0
+# GITHUB:       https://github.com/Josee9988/
+# MAIL:         jgracia9988@gmail.com
+#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#
 
 bold=`echo -en "\e[1m"`
 default=`echo -en "\e[39m"`
@@ -14,9 +21,11 @@ purple=`echo -en "\e[35m"`
 blink=`echo -en "\e[5m"`
 red=`echo -en "\e[31m"`
 
-echo ""
-echo "Remember to execute aliases '${bold}updatef${normal}' or '${bold}cleanf${normal}' as a '${blink}${bold}${underline}Superuser${normal}' will be created in your ${purple}.bash_aliases${normal} file."
+echo "We will create aliases in your ${blink}${purple}~/.bash_aliases${normal} file."
 
+
+
+##  ADDING UPDATEF, CLEANF AND UPDATEFF ##
 echo ""
 echo "Adding comments..."
 echo "" >> ~/.bash_aliases
@@ -28,19 +37,21 @@ echo "alias updatef='echo "Downloading software" && echo "" && apt-get update &&
 echo "Adding ${red}cleanf${normal} command"
 echo "alias cleanf='echo "Cleaning trash..." && echo "" && apt-get autoclean && rm -rf ~/.local/share/Trash/* && echo "" && echo "Removing and checking failed installations" && echo "" && apt-get autoremove && apt-get clean && apt-get check && apt install -f'" >> ~/.bash_aliases
 echo "" >> ~/.bash_aliases
+echo "# For all the update and upgrades and after that cleans your system. Updatef + cleanf all in one command" >> ~/.bash_aliases
+echo "alias updateff='updatef && cleanf'" >> ~/.bash_aliases
 
 
-echo "This file also includes ${red}${bold}cd${normal} commands which makes going back from folders much faster."
-read -p "Do you wish to install ${red}${bold}cd${normal} aliases? [Yy/Nn]" yn
-case $yn in
- [Yy]* ) 
-# cd commands
-echo "Adding cd commands"
-echo "cd commands will help you going back from folders."
+
+echo ""
+##  ADDING ..'s  ## 
+echo "This file includes ${red}${bold}cd${normal} commands which makes going back from folders much faster."
 echo "Example: ${red}...${normal} now equals to cd ../../../ (you can write from ${red}two${normal} dots to ${red}five${normal} dots)"
+read -p "Do you wish to install ${red}${bold}cd${normal} aliases? [Yy/Nn] " yn
+case $yn in
+	[Yy]* ) 
 echo "## get rid of command not found ##" >> ~/.bash_aliases
 echo "alias cd..='cd ..'" >> ~/.bash_aliases
-echo " " >> ~/.bash_aliases
+echo "" >> ~/.bash_aliases
 echo "## a quick way to get out of current directory ##" >> ~/.bash_aliases
 echo "alias ..='cd ..'" >> ~/.bash_aliases
 echo "alias ...='cd ../../../'" >> ~/.bash_aliases
@@ -52,22 +63,84 @@ echo "" >> ~/.bash_aliases
 * ) echo "Please answer yes or no. Your installation now will continue not installing ${bold}cd${normal}";;
 esac
 
-echo "Updating files..."
+
+
+echo ""
+##  EXTRACT ##
+echo "You can also install '${red}extract${normal}', which will uncompress almost any kind of compressed file, you will not need to worry what command uncompresses which file, just '${red}${bold}extract${normal}'"
+read -p "Do you wish to install ${red}${bold}extract${normal} aliases? [Yy/Nn] " yn
+case $yn in
+	[Yy]* ) 
+echo "## Use only 'extract' for most of your compressed files. ##" >> ~/.bash_aliases
+echo "extract () { " >> ~/.bash_aliases
+echo "   if [ -f \$1 ] ; then " >> ~/.bash_aliases
+echo "       case \$1 in " >> ~/.bash_aliases
+echo "           *.tar.bz2)   tar xvjf \$1    ;; " >> ~/.bash_aliases
+echo "           *.tar.gz)    tar xvzf \$1    ;; " >> ~/.bash_aliases
+echo "           *.bz2)       bunzip2 \$1     ;; " >> ~/.bash_aliases
+echo "           *.rar)       unrar x \$1     ;; " >> ~/.bash_aliases
+echo "           *.gz)        gunzip \$1      ;; " >> ~/.bash_aliases
+echo "           *.tar)       tar xvf \$1     ;; " >> ~/.bash_aliases
+echo "           *.tbz2)      tar xvjf \$1    ;; " >> ~/.bash_aliases
+echo "           *.tgz)       tar xvzf \$1    ;; " >> ~/.bash_aliases 
+echo "           *.zip)       unzip \$1       ;; " >> ~/.bash_aliases
+echo "           *.Z)         uncompress \$1  ;; " >> ~/.bash_aliases
+echo "           *.7z)        7z x \$1        ;; " >> ~/.bash_aliases
+echo "           *)           echo 'do not know how to extract \$1...' ;; " >> ~/.bash_aliases
+echo "       esac " >> ~/.bash_aliases
+echo "   else " >> ~/.bash_aliases
+echo "       echo '\$1 is not a valid file, or has spaces in it!' " >> ~/.bash_aliases
+echo "   fi " >> ~/.bash_aliases
+echo " } " >> ~/.bash_aliases
+echo "" >> ~/.bash_aliases
+;;
+[Nn]* ) echo "Not installing ${bold}extract${normal}" ;;
+* ) echo "Please answer yes or no. Your installation now will continue not installing ${bold}extract${normal}";;
+esac
+
+
+
+echo ""
+##  MARIADB.SERVICE ##
+echo "We also have 'mariadb' (start/stop/status) shortcuts"
+read -p "Do you wish to install ${red}${bold}mariadb${normal} aliases? [Yy/Nn] " yn
+case $yn in
+	[Yy]* ) 
+echo "# For starting mariadb.service " >> ~/.bash_aliases
+echo "alias startmaria='systemctl start mariadb.service' " >> ~/.bash_aliases
+echo "" >> ~/.bash_aliases
+echo "# For stopping mariadb.service " >> ~/.bash_aliases
+echo "alias stopmaria='systemctl stop mariadb.service' " >> ~/.bash_aliases
+echo "" >> ~/.bash_aliases
+echo "# For knowing the status of mariadb.service " >> ~/.bash_aliases 
+echo "alias statusmaria='systemctl status mariadb.service' " >> ~/.bash_aliases
+echo "" >> ~/.bash_aliases
+;;
+[Nn]* ) echo "Not installing ${bold}mariadb${normal}" ;;
+* ) echo "Please answer yes or no. Your installation now will continue not installing ${bold}mariadb${normal}";;
+esac
+
+
+
+echo ""
+echo "Updating bashrc..."
 source ~/.bash_aliases
 . ~/.bash_aliases
 
+
+
 echo ""
-echo "All done. "
-echo "To try them out please type '${bold}updatef${normal}' or '${bold}cleanf${normal}' always as a ${bold}${underline}Superuser${normal}."
-echo "To use '${bold}updatef${normal}' or '${bold}cleanf${normal}' first use ${red}sudo -s${normal} or neither will work"
+echo "${bold}All done.${normal} "
+echo "To try them out please type or '${bold}updateff${normal}', '${bold}updatef${normal}' or '${bold}cleanf${normal}' this three only always as a ${bold}${underline}Superuser${normal}."
+echo "To use '${bold}updatef${normal}', or '${bold}updateff${normal}' or '${bold}cleanf${normal}' first use ${red}sudo -s${normal} or neither will work"
 echo ""
-echo "To try the ${bold}cd${normal} commands you ${underline}dont${normal} need to be logged in as Superuser"
+echo "You can use '${bold}updateff${normal}' to use 'updatef' and 'cleanf' at once!"
 echo ""
-echo "If it is not working at first... please try to re-login in as a ${bold}Superuser${normal} or just re-loging in your user."
-echo "If both don't succeed just reboot."
+echo "To use the ${bold}cd's${normal} just write from one to five dots '${bold}.${normal}' '${bold}..${normal}' '${bold}...${normal}' '${bold}....${normal}' '${bold}.....${normal}' to navigate back to folders."
 echo ""
+echo "If you want to use the ${bold}extract${normal}, write it and after a compressed file (${bold}.rar, bz2, tar.gz${normal}, etc). Ex: extract compressed.rar"
+echo ""
+echo "To use the ${bold}mariadb${normal} commands just type '${bold}startmaria${normal}', '${bold}stopmaria${normal}' or '${bold}statusmaria${normal}' to start, stop or know the status of mariadb.service "
 echo "Thanks for using ${underline}Jose's .bash_aliases modification${normal}"
-
-
 
 exit
