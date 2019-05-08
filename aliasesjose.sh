@@ -2,7 +2,7 @@
 #~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#
 # SCRIPT:        aliasesjose.sh
 # USAGE:        ./aliasesjose.sh
-# PURPOSE:       Shell script that adds 'cd(..'s), 'updatef' and 'cleanf', 'updateff', 'extract', and 'mariadb' start/stop/status commands in .bash_aliases file.
+# PURPOSE:       Shell script that adds 'cd(..'s), 'updatef' and 'cleanf', 'updateff', 'extract', faster folder navigation, and 'mariadb' start/stop/status commands in .bash_aliases file.
 # TITLE:        aliasesjose.sh
 # AUTHOR:       Jose Gracia
 # VERSION:      1.5
@@ -25,9 +25,8 @@ echo "We will create aliases in your ${blink}${purple}~/.bash_aliases${normal} f
 
 
 
-##  ADDING UPDATEF, CLEANF AND UPDATEFF ##
 echo ""
-echo "Adding comments..."
+##  ADDING UPDATEF, CLEANF AND UPDATEFF ##
 echo "" >> ~/.bash_aliases
 echo "#updatef and cleanf must be executed as 'Superuser$'" >> ~/.bash_aliases
 echo "#updatef Will check for updates for normal software installed and also for your distro and after all" >> ~/.bash_aliases
@@ -122,6 +121,28 @@ esac
 
 
 
+##	SUDO	##
+echo "# might fix some sudo + alias problems" >> ~/.bash_aliases
+echo " alias sudo='sudo '" >> ~/.bash_aliases
+echo "" >> ~/.bash_aliases
+echo "# An alias to save some miliseconds of your time :) " >> ~/.bash_aliases
+echo "alias sudos='sudo -s' " >> ~/.bash_aliases
+
+
+## FAST NAVIGATION TO COMMON FOLDERS	##
+echo "# dont write again ~/... " >> ~/.bash_aliases 
+echo "alias cdDesktop='cd ~/Desktop/' " >> ~/.bash_aliases
+echo "alias cdDocuments='cd ~/Documents/' " >> ~/.bash_aliases
+echo "alias cdDownloads='cd ~/Downloads/' " >> ~/.bash_aliases
+echo "alias cdTrash='cd ~/.local/share/Trash/' " >> ~/.bash_aliases
+echo "" >> ~/.bash_aliases
+echo "alias cddesktop='cd ~/Desktop/' " >> ~/.bash_aliases 
+echo "alias cddocuments='cd ~/Documents/' " >> ~/.bash_aliases
+echo "alias cddownloads='cd ~/Downloads/' " >> ~/.bash_aliases
+echo "alias cdtrash='cd ~/.local/share/Trash/' " >> ~/.bash_aliases
+
+
+# Updating bash_aliases, so we can use the aliases without rebooting.
 echo ""
 echo "Updating bashrc..."
 source ~/.bash_aliases
@@ -140,7 +161,10 @@ echo "To use the ${bold}cd's${normal} just write from one to five dots '${bold}.
 echo ""
 echo "If you want to use the ${bold}extract${normal}, write it and after a compressed file (${bold}.rar, bz2, tar.gz${normal}, etc). Ex: extract compressed.rar"
 echo ""
-echo "To use the ${bold}mariadb${normal} commands just type '${bold}startmaria${normal}', '${bold}stopmaria${normal}' or '${bold}statusmaria${normal}' to start, stop or know the status of mariadb.service "
+echo "To use the ${bold}mariadb${normal} commands just type '${bold}startmaria${normal}', '${bold}stopmaria${normal}' or '${bold}statusmaria${normal}' to start, stop or know the status of ${underline}mariadb.service${normal} "
+echo ""
+echo "Also try ${bold}sudos${normal} instead of the regular '${bold}sudo -s${normal}'"
+echo "Don't ever do cd ~/Desktop or cd ~/.local/share/Trash/... now just use ${red}cdDesktop${normal} or ${red}cdDocuments${normal} or ${red}cdTrash${normal}..."
 echo "Thanks for using ${underline}Jose's .bash_aliases modification${normal}"
 
 exit
