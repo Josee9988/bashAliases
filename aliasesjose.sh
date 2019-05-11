@@ -101,7 +101,7 @@ esac
 
 echo ""
 ##  MARIADB.SERVICE ##
-echo "We also have 'mariadb' (start/stop/status) shortcuts"
+echo "We also have 'mariadb' (start/stop/status/use) shortcuts"
 read -p "Do you wish to install ${red}${bold}mariadb${normal} aliases? [Yy/Nn] " yn
 case $yn in
 	[Yy]* ) 
@@ -114,6 +114,8 @@ echo "" >> ~/.bash_aliases
 echo "# For knowing the status of mariadb.service " >> ~/.bash_aliases 
 echo "alias statusmaria='systemctl status mariadb.service' " >> ~/.bash_aliases
 echo "" >> ~/.bash_aliases
+echo "# Using mysql with root " >> ~/.bash_aliases
+echo "alias usemaria='mysql -u root -p' " >> ~/.bash_aliases
 ;;
 [Nn]* ) echo "Not installing ${bold}mariadb${normal}" ;;
 * ) echo "Please answer yes or no. Your installation now will continue not installing ${bold}mariadb${normal}";;
@@ -129,6 +131,7 @@ echo "# An alias to save some miliseconds of your time :) " >> ~/.bash_aliases
 echo "alias sudos='sudo -s' " >> ~/.bash_aliases
 
 
+
 ## FAST NAVIGATION TO COMMON FOLDERS	##
 echo "# dont write again ~/... " >> ~/.bash_aliases 
 echo "alias cdDesktop='cd ~/Desktop/' " >> ~/.bash_aliases
@@ -140,6 +143,8 @@ echo "alias cddesktop='cd ~/Desktop/' " >> ~/.bash_aliases
 echo "alias cddocuments='cd ~/Documents/' " >> ~/.bash_aliases
 echo "alias cddownloads='cd ~/Downloads/' " >> ~/.bash_aliases
 echo "alias cdtrash='cd ~/.local/share/Trash/' " >> ~/.bash_aliases
+echo "" >> ~/.bash_aliases
+
 
 
 # Updating bash_aliases, so we can use the aliases without rebooting.
@@ -147,6 +152,25 @@ echo ""
 echo "Updating bashrc..."
 source ~/.bash_aliases
 . ~/.bash_aliases
+
+
+
+echo ""
+##  GIT COMMANDS ##
+echo "We also have 'git' (status/add/commit/push/log) shortcuts"
+read -p "Do you wish to install ${red}${bold}git${normal} aliases? [Yy/Nn] " yn
+case $yn in
+	[Yy]* ) 
+echo "# Git" >> ~/.bash_aliases
+echo "alias gts='git status'" >> ~/.bash_aliases
+echo "alias gta='git add -A'" >> ~/.bash_aliases
+echo "alias gtm='git commit -m '$1''" >> ~/.bash_aliases
+echo "alias gtp='git push'" >> ~/.bash_aliases
+echo "alias gtl='git log --color --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --'" >> ~/.bash_aliases
+;;
+[Nn]* ) echo "Not installing ${bold}mariadb${normal}" ;;
+* ) echo "Please answer yes or no. Your installation now will continue not installing ${bold}mariadb${normal}";;
+esac
 
 
 
@@ -162,6 +186,9 @@ echo ""
 echo "If you want to use the ${bold}extract${normal}, write it and after a compressed file (${bold}.rar, bz2, tar.gz${normal}, etc). Ex: extract compressed.rar"
 echo ""
 echo "To use the ${bold}mariadb${normal} commands just type '${bold}startmaria${normal}', '${bold}stopmaria${normal}' or '${bold}statusmaria${normal}' to start, stop or know the status of ${underline}mariadb.service${normal} "
+echo "Or ${bold}usemaria${normal} for using mysql in root mode with password"
+echo ""
+echo "For using the ${bold}git${normal} commands use: ${red}gts${normal} for git status. ${red}gta${normal} for git add -A ${red}gtm${normal} for git commit -m  ${red}gtp${normal} for git push and ${red}gtl${normal} for git log."
 echo ""
 echo "Also try ${bold}sudos${normal} instead of the regular '${bold}sudo -s${normal}'"
 echo "Don't ever do cd ~/Desktop or cd ~/.local/share/Trash/... now just use ${red}cdDesktop${normal} or ${red}cdDocuments${normal} or ${red}cdTrash${normal}..."
