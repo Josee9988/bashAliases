@@ -2,7 +2,9 @@
 #~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#
 # SCRIPT:        aliasesjose.sh
 # USAGE:        ./aliasesjose.sh
-# PURPOSE:       Shell script that adds 'cd(..'s), 'updatef' and 'cleanf', 'updateff', 'extract', faster folder navigation, and 'mariadb' start/stop/status commands in .bash_aliases file.
+# PURPOSE:       Shell script that adds 'cd(..'s), 'updatef' and 'cleanf', 'updateff', 'extract', faster folder navigation, 
+#				'mariadb' start/stop/status commands in .bash_aliases file, git commands gta gtm gtp gtl
+#				system commands suspend hibernate. sudos instead of sudo -s. extract commands, etc...
 # TITLE:        aliasesjose.sh
 # AUTHOR:       Jose Gracia
 # VERSION:      1.5
@@ -27,6 +29,7 @@ echo "We will create aliases in your ${blink}${purple}~/.bash_aliases${normal} f
 
 echo ""
 ##  ADDING UPDATEF, CLEANF AND UPDATEFF ##
+echo "### Jose's bashrc modification ###" >> ~/.bash_aliases
 echo "" >> ~/.bash_aliases
 echo "#updatef and cleanf must be executed as 'Superuser$'" >> ~/.bash_aliases
 echo "#updatef Will check for updates for normal software installed and also for your distro and after all" >> ~/.bash_aliases
@@ -129,6 +132,8 @@ echo " alias sudo='sudo '" >> ~/.bash_aliases
 echo "" >> ~/.bash_aliases
 echo "# An alias to save some miliseconds of your time :) " >> ~/.bash_aliases
 echo "alias sudos='sudo -s' " >> ~/.bash_aliases
+echo "alias suspend='systemctl suspend'" >> ~/.bash_aliases
+echo "alias hibernate='systemctl hibernate'" >> ~/.bash_aliases
 
 
 
@@ -188,10 +193,12 @@ echo ""
 echo "To use the ${bold}mariadb${normal} commands just type '${bold}startmaria${normal}', '${bold}stopmaria${normal}' or '${bold}statusmaria${normal}' to start, stop or know the status of ${underline}mariadb.service${normal} "
 echo "Or ${bold}usemaria${normal} for using mysql in root mode with password"
 echo ""
-echo "For using the ${bold}git${normal} commands use: ${red}gts${normal} for git status. ${red}gta${normal} for git add -A ${red}gtm${normal} for git commit -m  ${red}gtp${normal} for git push and ${red}gtl${normal} for git log."
+echo "For using the ${bold}git${normal} commands use: ${red}gts${normal} for git status. ${red}gta${normal} for git add -A ${red}gtm ${bold}'your message'${normal} for git commit -m  ${red}gtp${normal} for git push and ${red}gtl${normal} for git log."
 echo ""
-echo "Also try ${bold}sudos${normal} instead of the regular '${bold}sudo -s${normal}'"
+echo "Also try ${bold}sudos${normal} instead of '${bold}sudo -s${normal}'. Use ${bold}suspend${normal} or ${bold}hibernate${normal} instead of systemctl suspend/hibernate."
 echo "Don't ever do cd ~/Desktop or cd ~/.local/share/Trash/... now just use ${red}cdDesktop${normal} or ${red}cdDocuments${normal} or ${red}cdTrash${normal}..."
+echo ""
+echo "You will find more information in the ${purple}README.MD${normal} file :)"
 echo "Thanks for using ${underline}Jose's .bash_aliases modification${normal}"
 
 exit
