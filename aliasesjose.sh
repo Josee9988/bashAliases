@@ -56,8 +56,8 @@ echo "alias cd..='cd ..'" >> ~/.bash_aliases
 echo "" >> ~/.bash_aliases
 echo "## a quick way to get out of current directory ##" >> ~/.bash_aliases
 echo "alias ..='cd ..'" >> ~/.bash_aliases
-echo "alias ...='cd ../../../'" >> ~/.bash_aliases
-echo "alias ....='cd ../../../../'" >> ~/.bash_aliases 
+echo "alias ...='cd ../../'" >> ~/.bash_aliases
+echo "alias ....='cd ../../../'" >> ~/.bash_aliases 
 echo "alias .....='cd ../../../../'" >> ~/.bash_aliases
 echo "" >> ~/.bash_aliases
 ;;

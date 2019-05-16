@@ -25,10 +25,10 @@ fi
 ### Easy navigation with *cd*
 
 - **cd..**: So you will not miss if you don't add that space.
-- **..**: For going back 2 folders.
-- **...**: For going back 3 folders.
-- **....**: For going back 4 folders.
-- **.....**: For going back 5 folders.
+- **..**: For going back 1 folders.
+- **...**: For going back 2 folders.
+- **....**: For going back 3 folders.
+- **.....**: For going back 4 folders.
 
 ### Easy navigation to main folders
 
