@@ -37,7 +37,7 @@ echo "#cleanf will clean trash that you don't really need and will check if any 
 echo "Adding ${red}updatef${normal} command"
 echo "alias updatef='echo "Downloading software" && echo "" && apt-get update && echo "Updating distro" && echo "" && apt dist-upgrade && echo "" && echo "Upgrading software" && echo "" && apt-get upgrade'" >> ~/.bash_aliases
 echo "Adding ${red}cleanf${normal} command"
-echo "alias cleanf='echo "Cleaning trash..." && echo "" && apt-get autoclean && rm -rf ~/.local/share/Trash/* && echo "" && echo "Removing and checking failed installations" && echo "" && apt-get autoremove && apt-get clean && apt-get check && apt install -f'" >> ~/.bash_aliases
+echo "alias cleanf='echo "Cleaning trash..." && rm -rf /tmp/* && echo "" && apt-get autoclean && rm -rf ~/.local/share/Trash/* && echo "" && echo "Removing and checking failed installations" && echo "" && apt-get autoremove && apt-get clean && apt-get check && apt install -f'" >> ~/.bash_aliases
 echo "" >> ~/.bash_aliases
 echo "# For all the update and upgrades and after that cleans your system. Updatef + cleanf all in one command" >> ~/.bash_aliases
 echo "alias updateff='updatef && cleanf'" >> ~/.bash_aliases
