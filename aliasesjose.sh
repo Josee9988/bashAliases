@@ -171,11 +171,29 @@ echo "alias gts='git status'" >> ~/.bash_aliases
 echo "alias gta='git add -A'" >> ~/.bash_aliases
 echo "alias gtm='git commit -m '$1''" >> ~/.bash_aliases
 echo "alias gtp='git push'" >> ~/.bash_aliases
-echo "alias gtl='git log --color --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --'" >> ~/.bash_aliases
+echo "alias gtl='git log --color --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --'" >> ~/.bash_aliases
+echo "" >> ~/.bash_aliases
 ;;
 [Nn]* ) echo "Not installing ${bold}mariadb${normal}" ;;
 * ) echo "Please answer yes or no. Your installation now will continue not installing ${bold}mariadb${normal}";;
 esac
+
+
+
+##	COUNT LINES	##
+echo "clines () { " >> ~/.bash_aliases
+echo "	if [ -z '\$1' ]; then" >> ~/.bash_aliases
+echo "        echo 'At least give one file type by parameter'" >> ~/.bash_aliases
+echo "        elif  [ -z '\$2' ]; then" >> ~/.bash_aliases
+echo "            find -type f -name "*.$1*" -o -name "*.$2" | xargs wc -l | sort -n" >> ~/.bash_aliases
+echo "        elif  [ -z '\$3' ]; then" >> ~/.bash_aliases
+echo "            find -type f -name "*.$1*" -o -name "*.$2"  -o -name "*.$3" | xargs wc -l | sort -n" >> ~/.bash_aliases
+echo "        elif  [ -z '\$4' ]; then" >> ~/.bash_aliases
+echo "            find -type f -name "*.$1*" -o -name "*.$2" -o -name "*.$3" -o -name "*.$4" | xargs wc -l | sort -n" >> ~/.bash_aliases
+echo "        elif  [ -z '\$5' ]; then" >> ~/.bash_aliases
+echo "            find -type f -name "*.$1*" -o -name "*.$2" -o -name "*.$3" -o -name "*.$4" -o -name "*.$5" | xargs wc -l | sort -n" >> ~/.bash_aliases
+echo "	fi" >> ~/.bash_aliases
+echo "} " >> ~/.bash_aliases
 
 
 
@@ -197,6 +215,8 @@ echo "For using the ${bold}git${normal} commands use: ${red}gts${normal} for git
 echo ""
 echo "Also try ${bold}sudos${normal} instead of '${bold}sudo -s${normal}'. Use ${bold}suspend${normal} or ${bold}hibernate${normal} instead of systemctl suspend/hibernate."
 echo "Don't ever do cd ~/Desktop or cd ~/.local/share/Trash/... now just use ${red}cdDesktop${normal} or ${red}cdDocuments${normal} or ${red}cdTrash${normal}..."
+echo ""
+echo "Use ${bold}cLines${normal} and give from 1 to 5 tipe of files and it will count all the lines"
 echo ""
 echo "You will find more information in the ${purple}README.MD${normal} file :)"
 echo "Thanks for using ${underline}Jose's .bash_aliases modification${normal}"
