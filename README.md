@@ -63,3 +63,13 @@ fi
 - **gtm "$1"**: For git commit -m
 - **gtl**: For git color formatted with colors
 - **gtp**: For git push
+
+### Counting lines
+
+    - clines java css html: will output the number of lines of all the files that are *.java, *.css or *.html
+
+- **clines 'extension'**: Counts the lines of 1 file extension.
+- **clines 'extension' 'extension'**: Counts the lines of 2 different file extensions.
+- **clines 'extension' 'extension'**: Counts the lines of 3 different file extensions.
+- **clines 'extension' 'extension'**: Counts the lines of 4 different file extensions.
+- **clines 'extension' 'extension'**: Counts the lines of 5 different file extensions.

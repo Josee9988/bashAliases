@@ -4,7 +4,7 @@
 # USAGE:        ./aliasesjose.sh
 # PURPOSE:       Shell script that adds 'cd(..'s), 'updatef' and 'cleanf', 'updateff', 'extract', faster folder navigation, 
 #				'mariadb' start/stop/status commands in .bash_aliases file, git commands gta gtm gtp gtl
-#				system commands suspend hibernate. sudos instead of sudo -s. extract commands, etc...
+#				system commands suspend hibernate. sudos instead of sudo -s. extract commands, counting lines of types of file, etc...
 # TITLE:        aliasesjose.sh
 # AUTHOR:       Jose Gracia
 # VERSION:      1.5
@@ -185,18 +185,19 @@ echo "clines () { " >> ~/.bash_aliases
 echo "	if [ -z '\$1' ]; then" >> ~/.bash_aliases
 echo "        echo 'At least give one file type by parameter'" >> ~/.bash_aliases
 echo "        elif  [ -z '\$2' ]; then" >> ~/.bash_aliases
-echo "            find -type f -name "*.$1*" -o -name "*.$2" | xargs wc -l | sort -n" >> ~/.bash_aliases
+echo "            find -type f -name "*.$1" -o -name "*.$2" | xargs wc -l | sort -n" >> ~/.bash_aliases
 echo "        elif  [ -z '\$3' ]; then" >> ~/.bash_aliases
-echo "            find -type f -name "*.$1*" -o -name "*.$2"  -o -name "*.$3" | xargs wc -l | sort -n" >> ~/.bash_aliases
+echo "            find -type f -name "*.$1" -o -name "*.$2" -o -name "*.$3" | xargs wc -l | sort -n" >> ~/.bash_aliases
 echo "        elif  [ -z '\$4' ]; then" >> ~/.bash_aliases
-echo "            find -type f -name "*.$1*" -o -name "*.$2" -o -name "*.$3" -o -name "*.$4" | xargs wc -l | sort -n" >> ~/.bash_aliases
+echo "            find -type f -name "*.$1" -o -name "*.$2" -o -name "*.$3" -o -name "*.$4" | xargs wc -l | sort -n" >> ~/.bash_aliases
 echo "        elif  [ -z '\$5' ]; then" >> ~/.bash_aliases
-echo "            find -type f -name "*.$1*" -o -name "*.$2" -o -name "*.$3" -o -name "*.$4" -o -name "*.$5" | xargs wc -l | sort -n" >> ~/.bash_aliases
+echo "            find -type f -name "*.$1" -o -name "*.$2" -o -name "*.$3" -o -name "*.$4" -o -name "*.$5" | xargs wc -l | sort -n" >> ~/.bash_aliases
 echo "	fi" >> ~/.bash_aliases
 echo "} " >> ~/.bash_aliases
 
 
 
+##	MENSAJES FINALES	##
 echo ""
 echo "${bold}All done.${normal} "
 echo "To try them out please type or '${bold}updateff${normal}', '${bold}updatef${normal}' or '${bold}cleanf${normal}' this three only always as a ${bold}${underline}Superuser${normal}."
