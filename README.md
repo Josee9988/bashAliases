@@ -73,3 +73,7 @@ fi
 - **clines 'extension' 'extension'**: Counts the lines of 3 different file extensions.
 - **clines 'extension' 'extension'**: Counts the lines of 4 different file extensions.
 - **clines 'extension' 'extension'**: Counts the lines of 5 different file extensions.
+
+### Neofetch
+
+- **sysinfo**: An alias for 'neofetch'.

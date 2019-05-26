@@ -152,14 +152,6 @@ echo "" >> ~/.bash_aliases
 
 
 
-# Updating bash_aliases, so we can use the aliases without rebooting.
-echo ""
-echo "Updating bashrc..."
-source ~/.bash_aliases
-. ~/.bash_aliases
-
-
-
 echo ""
 ##  GIT COMMANDS ##
 echo "We also have 'git' (status/add/commit/push/log) shortcuts"
@@ -179,8 +171,9 @@ echo "" >> ~/.bash_aliases
 esac
 
 
-
+echo "Adding some extra feaures you might like..."
 ##	COUNT LINES	##
+echo "##	COUNT LINES	##"
 echo "clines () { " >> ~/.bash_aliases
 echo "	if [ -z '\$1' ]; then" >> ~/.bash_aliases
 echo "        echo 'At least give one file type by parameter'" >> ~/.bash_aliases
@@ -194,6 +187,20 @@ echo "        elif  [ -z '\$5' ]; then" >> ~/.bash_aliases
 echo "            find -type f -name "*.$1" -o -name "*.$2" -o -name "*.$3" -o -name "*.$4" -o -name "*.$5" | xargs wc -l | sort -n" >> ~/.bash_aliases
 echo "	fi" >> ~/.bash_aliases
 echo "} " >> ~/.bash_aliases
+echo "">> ~/.bash_aliases
+
+
+
+##	neofetch	##
+echo "alias sysinfo='neofetch'">> ~/.bash_aliases
+echo "">> ~/.bash_aliases
+
+
+# Updating bash_aliases, so we can use the aliases without rebooting.
+echo ""
+echo "Updating bashrc..."
+source ~/.bash_aliases
+. ~/.bash_aliases
 
 
 
@@ -219,7 +226,9 @@ echo "Don't ever do cd ~/Desktop or cd ~/.local/share/Trash/... now just use ${r
 echo ""
 echo "Use ${bold}cLines${normal} and give from 1 to 5 tipe of files and it will count all the lines"
 echo ""
-echo "You will find more information in the ${purple}README.MD${normal} file :)"
+echo ""
+echo "You will find more information and more detailed in the ${purple}README.MD${normal} file :)"
+echo "${bold}${underline}https://github.com/Josee9988/bashrcralias${normal}"
 echo "Thanks for using ${underline}Jose's .bash_aliases modification${normal}"
 
 exit
