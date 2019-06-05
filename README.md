@@ -4,13 +4,15 @@
 
 Shell script that adds several aliases to your '*~/bash_aliases*' file.
 
-You should check that in your '*~/.bashrc*' you have:
+If it is not working you may check that in your '*~/.bashrc*' file you have:
 
 ```` bash
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 ````
+
+Although its meant to be checked automatically by the script.
 
 ---
 
@@ -32,7 +34,7 @@ fi
 
 ### Easy navigation to main folders
 
-    It also allows lowercase in the name of the folder
+`It also allows lowercase in the name of the folder`
 
 - **cdDesktop**: to go to the desktop
 - **cdDocuments**: to go to documents
@@ -66,7 +68,7 @@ fi
 
 ### Counting lines
 
-    - clines java css html: will output the number of lines of all the files that are *.java, *.css or *.html
+`Example: "clines java css html": will output the number of lines of all the files that are *.java, *.css or *.html. Searched recursively through all subdirectories`
 
 - **clines 'extension'**: Counts the lines of 1 file extension.
 - **clines 'extension' 'extension'**: Counts the lines of 2 different file extensions.

@@ -8,7 +8,8 @@
 # TITLE:        aliasesjose.sh
 # AUTHOR:       Jose Gracia
 # VERSION:      1.5
-# NOTES:        Check that in your ~/.bashrc you have a line like: . ~/.bash_aliases which is surrounded by an if. If this is not in your linux distro add it yourself
+# NOTES:        If none of the aliases work check that in your ~/.bashrc you have a line like: . ~/.bash_aliases which is surrounded by an if. 
+#				If this is not in your linux distro add it yourself.
 # BASH_VERSION: GNU bash, version 4.4.19(1)-release (x86_64-pc-linux-gnu)
 # LICENSE:      GNU General Public License v3.0
 # GITHUB:       https://github.com/Josee9988/
@@ -22,14 +23,19 @@ underline=`echo -en "\e[4m"`
 purple=`echo -en "\e[35m"`
 blink=`echo -en "\e[5m"`
 red=`echo -en "\e[31m"`
+line='. ~/.bash_aliases'
+file=~/.bashrc
+
+
 
 echo "We will create aliases in your ${blink}${purple}~/.bash_aliases${normal} file."
 
 
 
 echo ""
-##  ADDING UPDATEF, CLEANF AND UPDATEFF ##
+echo "" >> ~/.bash_aliases
 echo "### Jose's bashrc modification ###" >> ~/.bash_aliases
+##  ADDING UPDATEF, CLEANF AND UPDATEFF ##
 echo "" >> ~/.bash_aliases
 echo "#updatef and cleanf must be executed as 'Superuser$'" >> ~/.bash_aliases
 echo "#updatef Will check for updates for normal software installed and also for your distro and after all" >> ~/.bash_aliases
@@ -51,10 +57,10 @@ echo "Example: ${red}...${normal} now equals to cd ../../../ (you can write from
 read -p "Do you wish to install ${red}${bold}cd${normal} aliases? [Yy/Nn] " yn
 case $yn in
 	[Yy]* ) 
-echo "## get rid of command not found ##" >> ~/.bash_aliases
+echo "## Get rid of command not found ##" >> ~/.bash_aliases
 echo "alias cd..='cd ..'" >> ~/.bash_aliases
 echo "" >> ~/.bash_aliases
-echo "## a quick way to get out of current directory ##" >> ~/.bash_aliases
+echo "## A quick way to move backwards from the current directory ##" >> ~/.bash_aliases
 echo "alias ..='cd ..'" >> ~/.bash_aliases
 echo "alias ...='cd ../../'" >> ~/.bash_aliases
 echo "alias ....='cd ../../../'" >> ~/.bash_aliases 
@@ -171,6 +177,7 @@ echo "" >> ~/.bash_aliases
 esac
 
 
+
 echo "Adding some extra feaures you might like..."
 ##	COUNT LINES	##
 echo "##	COUNT LINES	##"
@@ -196,11 +203,22 @@ echo "alias sysinfo='neofetch'">> ~/.bash_aliases
 echo "">> ~/.bash_aliases
 
 
+
+##	Checking if .bash_aliases is enabled in .bashrc file	##
+if ! grep -q -x -F -e "$line" <"$file"; then
+    echo "" >> "$file"
+    printf '%s\n' "$line" >>"$file"
+fi
+
+
+
 # Updating bash_aliases, so we can use the aliases without rebooting.
 echo ""
 echo "Updating bashrc..."
 source ~/.bash_aliases
 . ~/.bash_aliases
+source ~/.bashrc
+. ~/.bashrc
 
 
 
