@@ -144,6 +144,7 @@ echo "alias hibernate='systemctl hibernate'" >> ~/.bash_aliases
 
 
 ## FAST NAVIGATION TO COMMON FOLDERS	##
+echo "" >> ~/.bash_aliases  
 echo "# dont write again ~/... " >> ~/.bash_aliases 
 echo "alias cdDesktop='cd ~/Desktop/' " >> ~/.bash_aliases
 echo "alias cdDocuments='cd ~/Documents/' " >> ~/.bash_aliases
@@ -206,8 +207,12 @@ echo "">> ~/.bash_aliases
 
 ##	Checking if .bash_aliases is enabled in .bashrc file	##
 if ! grep -q -x -F -e "$line" <"$file"; then
+	echo "Enabling .bash_aliases in your .bashrc file"
     echo "" >> "$file"
+	echo "if [ -f ~/.bash_aliases ]; then" >> "$file"
     printf '%s\n' "$line" >>"$file"
+	echo "fi" >> "$file"
+	echo "" >> "$file"
 fi
 
 
