@@ -23,7 +23,8 @@ underline=`echo -en "\e[4m"`
 purple=`echo -en "\e[35m"`
 blink=`echo -en "\e[5m"`
 red=`echo -en "\e[31m"`
-line='. $fileAlias'
+line='. ~/.bash_aliases'
+lineSearch='if [ -f ~/.bash_aliases ]; then'
 file=~/.bashrc
 fileAlias=~/.bash_aliases
 
@@ -104,7 +105,7 @@ echo "           *.tgz)       tar xvzf \$1    ;; " >> $fileAlias
 echo "           *.zip)       unzip \$1       ;; " >> $fileAlias
 echo "           *.Z)         uncompress \$1  ;; " >> $fileAlias
 echo "           *.7z)        7z x \$1        ;; " >> $fileAlias
-echo "           *)           echo 'do not know how to extract \$1...' ;; " >> $fileAlias
+echo "           *)           echo 'do not know how to extract \$1 ...' ;; " >> $fileAlias
 echo "       esac " >> $fileAlias
 echo "   else " >> $fileAlias
 echo "       echo '\$1 is not a valid file, or has spaces in it!' " >> $fileAlias
@@ -191,15 +192,15 @@ case $yn in
 	[Yy]* ) 
 echo "##	COUNT LINES	##">> $fileAlias
 echo "clines () { " >> $fileAlias
-echo "	if [ -z '\$1' ]; then" >> $fileAlias
+echo "	if [ -z \$1 ]; then" >> $fileAlias
 echo "        echo 'At least give one file type by parameter'" >> $fileAlias
-echo "        elif  [ -z '\$2' ]; then" >> $fileAlias
+echo "        elif  [ -z \$2 ]; then" >> $fileAlias
 echo "            find -type f -name "*.$1" -o -name "*.$2" | xargs wc -l | sort -n" >> $fileAlias
-echo "        elif  [ -z '\$3' ]; then" >> $fileAlias
+echo "        elif  [ -z \$3 ]; then" >> $fileAlias
 echo "            find -type f -name "*.$1" -o -name "*.$2" -o -name "*.$3" | xargs wc -l | sort -n" >> $fileAlias
-echo "        elif  [ -z '\$4' ]; then" >> $fileAlias
+echo "        elif  [ -z \$4 ]; then" >> $fileAlias
 echo "            find -type f -name "*.$1" -o -name "*.$2" -o -name "*.$3" -o -name "*.$4" | xargs wc -l | sort -n" >> $fileAlias
-echo "        elif  [ -z '\$5' ]; then" >> $fileAlias
+echo "        elif  [ -z \$5 ]; then" >> $fileAlias
 echo "            find -type f -name "*.$1" -o -name "*.$2" -o -name "*.$3" -o -name "*.$4" -o -name "*.$5" | xargs wc -l | sort -n" >> $fileAlias
 echo "	fi" >> $fileAlias
 echo "} " >> $fileAlias
@@ -272,10 +273,11 @@ echo "#End of Jose's bashrc modification">> $fileAlias
 
 
 ##	Checking if .bash_aliases is enabled in .bashrc file	##
-if ! grep -q -x -F -e "$line" <"$file"; then
+if ! grep -q -x -F -e "$lineSearch" <"$file"; then
+	echo ""
 	echo "${underline}Enabling${normal} .bash_aliases in your .bashrc file"
     echo "" >> "$file"
-	echo "if [ -f $fileAlias ]; then" >> "$file"
+	echo "if [ -f ~/.bash_aliases ]; then" >> "$file"
     printf '%s\n' "$line" >>"$file"
 	echo "fi" >> "$file"
 	echo "" >> "$file"
@@ -286,8 +288,8 @@ fi
 ## Updating bash_aliases, so we can use the aliases without rebooting.	##
 echo ""
 echo "Updating bashrc's..."
-source $fileAlias
-. $fileAlias
+source ~/.bash_aliases
+. ~/.bash_aliases
 source ~/.bashrc
 . ~/.bashrc
 
