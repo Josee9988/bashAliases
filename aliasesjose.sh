@@ -8,7 +8,7 @@
 # TITLE:        aliasesjose.sh
 # AUTHOR:       Jose Gracia
 # VERSION:      1.5
-# NOTES:        If none of the aliases work check that in your ~/.bashrc you have a line like: . ~/.bash_aliases which is surrounded by an if. 
+# NOTES:        If none of the aliases work check that in your ~/.bashrc you have a line like: . $fileAlias which is surrounded by an if. 
 #				If this is not in your linux distro add it yourself.
 # BASH_VERSION: GNU bash, version 4.4.19(1)-release (x86_64-pc-linux-gnu)
 # LICENSE:      GNU General Public License v3.0
@@ -23,31 +23,40 @@ underline=`echo -en "\e[4m"`
 purple=`echo -en "\e[35m"`
 blink=`echo -en "\e[5m"`
 red=`echo -en "\e[31m"`
-line='. ~/.bash_aliases'
+line='. $fileAlias'
 file=~/.bashrc
+fileAlias=~/.bash_aliases
 
 
 
-echo "We will create aliases in your ${blink}${purple}~/.bash_aliases${normal} file."
+echo "We will create aliases in your ${blink}${purple}$fileAlias${normal} file."
 
 
 
 echo ""
-echo "" >> ~/.bash_aliases
-echo "### Jose's bashrc modification ###" >> ~/.bash_aliases
-##  ADDING UPDATEF, CLEANF AND UPDATEFF ##
-echo "" >> ~/.bash_aliases
-echo "#updatef and cleanf must be executed as 'Superuser$'" >> ~/.bash_aliases
-echo "#updatef Will check for updates for normal software installed and also for your distro and after all" >> ~/.bash_aliases
-echo "#cleanf will clean trash that you don't really need and will check if any installation has gone through any error." >> ~/.bash_aliases
-echo "Adding ${red}updatef${normal} command"
-echo "alias updatef='echo "Downloading software" && echo "" && apt-get update && echo "Updating distro" && echo "" && apt dist-upgrade && echo "" && echo "Upgrading software" && echo "" && apt-get upgrade'" >> ~/.bash_aliases
-echo "Adding ${red}cleanf${normal} command"
-echo "alias cleanf='echo "Cleaning trash..." && rm -rf /tmp/* && echo "" && apt-get autoclean && rm -rf ~/.local/share/Trash/* && echo "" && echo "Removing and checking failed installations" && echo "" && apt-get autoremove && apt-get clean && apt-get check && apt install -f'" >> ~/.bash_aliases
-echo "" >> ~/.bash_aliases
-echo "# For all the update and upgrades and after that cleans your system. Updatef + cleanf all in one command" >> ~/.bash_aliases
-echo "alias updateff='updatef && cleanf'" >> ~/.bash_aliases
+echo "" >> $fileAlias
+echo "### Jose's bashrc modification ###" >> $fileAlias
 
+
+
+echo "${red}${bold}updatef${normal} and ${red}${bold}cleanf${normal} aliases, updates and upgrades your system and cleans it."
+read -p "Do you wish to install ${red}${bold}updatef and cleanf${normal} aliases? [Yy/Nn] " yn
+case $yn in
+	[Yy]* ) 
+##  ADDING UPDATEF, CLEANF AND UPDATEFF ##
+echo "" >> $fileAlias
+echo "#updatef and cleanf must be executed as 'Superuser$'" >> $fileAlias
+echo "#updatef Will check for updates for normal software installed and also for your distro and after all" >> $fileAlias
+echo "#cleanf will clean trash that you don't really need and will check if any installation has gone through any error." >> $fileAlias
+echo "alias updatef='echo "Downloading software" && echo "" && apt-get update && echo "Updating distro" && echo "" && apt dist-upgrade && echo "" && echo "Upgrading software" && echo "" && apt-get upgrade'" >> $fileAlias
+echo "alias cleanf='echo "Cleaning trash..." && rm -rf /tmp/* && echo "" && apt-get autoclean && rm -rf ~/.local/share/Trash/* && echo "" && echo "Removing and checking failed installations" && echo "" && apt-get autoremove && apt-get clean && apt-get check && apt install -f'" >> $fileAlias
+echo "" >> $fileAlias
+echo "# For all the update and upgrades and after that cleans your system. Updatef + cleanf all in one command" >> $fileAlias
+echo "alias updateff='updatef && cleanf'" >> $fileAlias
+;;
+[Nn]* ) echo "Not installing ${bold}updatef cleanf${normal}" ;;
+* ) echo "Please answer yes or no. Your installation now will continue not installing ${bold}updatef cleanf${normal}";;
+esac
 
 
 echo ""
@@ -57,15 +66,16 @@ echo "Example: ${red}...${normal} now equals to cd ../../../ (you can write from
 read -p "Do you wish to install ${red}${bold}cd${normal} aliases? [Yy/Nn] " yn
 case $yn in
 	[Yy]* ) 
-echo "## Get rid of command not found ##" >> ~/.bash_aliases
-echo "alias cd..='cd ..'" >> ~/.bash_aliases
-echo "" >> ~/.bash_aliases
-echo "## A quick way to move backwards from the current directory ##" >> ~/.bash_aliases
-echo "alias ..='cd ..'" >> ~/.bash_aliases
-echo "alias ...='cd ../../'" >> ~/.bash_aliases
-echo "alias ....='cd ../../../'" >> ~/.bash_aliases 
-echo "alias .....='cd ../../../../'" >> ~/.bash_aliases
-echo "" >> ~/.bash_aliases
+echo "" >> $fileAlias
+echo "## Get rid of command not found ##" >> $fileAlias
+echo "alias cd..='cd ..'" >> $fileAlias
+echo "" >> $fileAlias
+echo "## A quick way to move backwards from the current directory ##" >> $fileAlias
+echo "alias ..='cd ..'" >> $fileAlias
+echo "alias ...='cd ../../'" >> $fileAlias
+echo "alias ....='cd ../../../'" >> $fileAlias 
+echo "alias .....='cd ../../../../'" >> $fileAlias
+echo "" >> $fileAlias
 ;;
 [Nn]* ) echo "Not installing ${bold}cd${normal}" ;;
 * ) echo "Please answer yes or no. Your installation now will continue not installing ${bold}cd${normal}";;
@@ -79,28 +89,28 @@ echo "You can also install '${red}extract${normal}', which will uncompress almos
 read -p "Do you wish to install ${red}${bold}extract${normal} aliases? [Yy/Nn] " yn
 case $yn in
 	[Yy]* ) 
-echo "## Use only 'extract' for most of your compressed files. ##" >> ~/.bash_aliases
-echo "extract () { " >> ~/.bash_aliases
-echo "   if [ -f \$1 ] ; then " >> ~/.bash_aliases
-echo "       case \$1 in " >> ~/.bash_aliases
-echo "           *.tar.bz2)   tar xvjf \$1    ;; " >> ~/.bash_aliases
-echo "           *.tar.gz)    tar xvzf \$1    ;; " >> ~/.bash_aliases
-echo "           *.bz2)       bunzip2 \$1     ;; " >> ~/.bash_aliases
-echo "           *.rar)       unrar x \$1     ;; " >> ~/.bash_aliases
-echo "           *.gz)        gunzip \$1      ;; " >> ~/.bash_aliases
-echo "           *.tar)       tar xvf \$1     ;; " >> ~/.bash_aliases
-echo "           *.tbz2)      tar xvjf \$1    ;; " >> ~/.bash_aliases
-echo "           *.tgz)       tar xvzf \$1    ;; " >> ~/.bash_aliases 
-echo "           *.zip)       unzip \$1       ;; " >> ~/.bash_aliases
-echo "           *.Z)         uncompress \$1  ;; " >> ~/.bash_aliases
-echo "           *.7z)        7z x \$1        ;; " >> ~/.bash_aliases
-echo "           *)           echo 'do not know how to extract \$1...' ;; " >> ~/.bash_aliases
-echo "       esac " >> ~/.bash_aliases
-echo "   else " >> ~/.bash_aliases
-echo "       echo '\$1 is not a valid file, or has spaces in it!' " >> ~/.bash_aliases
-echo "   fi " >> ~/.bash_aliases
-echo " } " >> ~/.bash_aliases
-echo "" >> ~/.bash_aliases
+echo "## Use only 'extract' for most of your compressed files. ##" >> $fileAlias
+echo "extract () { " >> $fileAlias
+echo "   if [ -f \$1 ] ; then " >> $fileAlias
+echo "       case \$1 in " >> $fileAlias
+echo "           *.tar.bz2)   tar xvjf \$1    ;; " >> $fileAlias
+echo "           *.tar.gz)    tar xvzf \$1    ;; " >> $fileAlias
+echo "           *.bz2)       bunzip2 \$1     ;; " >> $fileAlias
+echo "           *.rar)       unrar x \$1     ;; " >> $fileAlias
+echo "           *.gz)        gunzip \$1      ;; " >> $fileAlias
+echo "           *.tar)       tar xvf \$1     ;; " >> $fileAlias
+echo "           *.tbz2)      tar xvjf \$1    ;; " >> $fileAlias
+echo "           *.tgz)       tar xvzf \$1    ;; " >> $fileAlias 
+echo "           *.zip)       unzip \$1       ;; " >> $fileAlias
+echo "           *.Z)         uncompress \$1  ;; " >> $fileAlias
+echo "           *.7z)        7z x \$1        ;; " >> $fileAlias
+echo "           *)           echo 'do not know how to extract \$1...' ;; " >> $fileAlias
+echo "       esac " >> $fileAlias
+echo "   else " >> $fileAlias
+echo "       echo '\$1 is not a valid file, or has spaces in it!' " >> $fileAlias
+echo "   fi " >> $fileAlias
+echo " } " >> $fileAlias
+echo "" >> $fileAlias
 ;;
 [Nn]* ) echo "Not installing ${bold}extract${normal}" ;;
 * ) echo "Please answer yes or no. Your installation now will continue not installing ${bold}extract${normal}";;
@@ -114,49 +124,44 @@ echo "We also have 'mariadb' (start/stop/status/use) shortcuts"
 read -p "Do you wish to install ${red}${bold}mariadb${normal} aliases? [Yy/Nn] " yn
 case $yn in
 	[Yy]* ) 
-echo "# For starting mariadb.service " >> ~/.bash_aliases
-echo "alias startmaria='systemctl start mariadb.service' " >> ~/.bash_aliases
-echo "" >> ~/.bash_aliases
-echo "# For stopping mariadb.service " >> ~/.bash_aliases
-echo "alias stopmaria='systemctl stop mariadb.service' " >> ~/.bash_aliases
-echo "" >> ~/.bash_aliases
-echo "# For knowing the status of mariadb.service " >> ~/.bash_aliases 
-echo "alias statusmaria='systemctl status mariadb.service' " >> ~/.bash_aliases
-echo "" >> ~/.bash_aliases
-echo "# Using mysql with root " >> ~/.bash_aliases
-echo "alias usemaria='mysql -u root -p' " >> ~/.bash_aliases
+echo "# For starting mariadb.service " >> $fileAlias
+echo "alias startmaria='systemctl start mariadb.service' " >> $fileAlias
+echo "" >> $fileAlias
+echo "# For stopping mariadb.service " >> $fileAlias
+echo "alias stopmaria='systemctl stop mariadb.service' " >> $fileAlias
+echo "" >> $fileAlias
+echo "# For knowing the status of mariadb.service " >> $fileAlias 
+echo "alias statusmaria='systemctl status mariadb.service' " >> $fileAlias
+echo "" >> $fileAlias
+echo "# Using mysql with root " >> $fileAlias
+echo "alias usemaria='mysql -u root -p' " >> $fileAlias
 ;;
 [Nn]* ) echo "Not installing ${bold}mariadb${normal}" ;;
 * ) echo "Please answer yes or no. Your installation now will continue not installing ${bold}mariadb${normal}";;
 esac
-
-
-
-##	SUDO	##
-echo "# might fix some sudo + alias problems" >> ~/.bash_aliases
-echo " alias sudo='sudo '" >> ~/.bash_aliases
-echo "" >> ~/.bash_aliases
-echo "# An alias to save some miliseconds of your time :) " >> ~/.bash_aliases
-echo "alias sudos='sudo -s' " >> ~/.bash_aliases
-echo "alias suspend='systemctl suspend'" >> ~/.bash_aliases
-echo "alias hibernate='systemctl hibernate'" >> ~/.bash_aliases
-
+echo ""
 
 
 ## FAST NAVIGATION TO COMMON FOLDERS	##
-echo "" >> ~/.bash_aliases  
-echo "# dont write again ~/... " >> ~/.bash_aliases 
-echo "alias cdDesktop='cd ~/Desktop/' " >> ~/.bash_aliases
-echo "alias cdDocuments='cd ~/Documents/' " >> ~/.bash_aliases
-echo "alias cdDownloads='cd ~/Downloads/' " >> ~/.bash_aliases
-echo "alias cdTrash='cd ~/.local/share/Trash/' " >> ~/.bash_aliases
-echo "" >> ~/.bash_aliases
-echo "alias cddesktop='cd ~/Desktop/' " >> ~/.bash_aliases 
-echo "alias cddocuments='cd ~/Documents/' " >> ~/.bash_aliases
-echo "alias cddownloads='cd ~/Downloads/' " >> ~/.bash_aliases
-echo "alias cdtrash='cd ~/.local/share/Trash/' " >> ~/.bash_aliases
-echo "" >> ~/.bash_aliases
-
+read -p "Do you wish to install ${red}${bold}easy common folder navigation${normal} aliases? [Yy/Nn] " yn
+case $yn in
+	[Yy]* ) 
+echo "" >> $fileAlias  
+echo "# dont write again ~/... " >> $fileAlias 
+echo "alias cdDesktop='cd ~/Desktop/' " >> $fileAlias
+echo "alias cdDocuments='cd ~/Documents/' " >> $fileAlias
+echo "alias cdDownloads='cd ~/Downloads/' " >> $fileAlias
+echo "alias cdTrash='cd ~/.local/share/Trash/' " >> $fileAlias
+echo "" >> $fileAlias
+echo "alias cddesktop='cd ~/Desktop/' " >> $fileAlias 
+echo "alias cddocuments='cd ~/Documents/' " >> $fileAlias
+echo "alias cddownloads='cd ~/Downloads/' " >> $fileAlias
+echo "alias cdtrash='cd ~/.local/share/Trash/' " >> $fileAlias
+echo "" >> $fileAlias
+;;
+[Nn]* ) echo "Not installing ${bold}easy common folder navigation${normal}" ;;
+* ) echo "Please answer yes or no. Your installation now will continue not installing ${bold}easy common folder navigation${normal}";;
+esac
 
 
 echo ""
@@ -165,63 +170,112 @@ echo "We also have 'git' (status/add/commit/push/log) shortcuts"
 read -p "Do you wish to install ${red}${bold}git${normal} aliases? [Yy/Nn] " yn
 case $yn in
 	[Yy]* ) 
-echo "# Git" >> ~/.bash_aliases
-echo "alias gts='git status'" >> ~/.bash_aliases
-echo "alias gta='git add -A'" >> ~/.bash_aliases
-echo "alias gtm='git commit -m '$1''" >> ~/.bash_aliases
-echo "alias gtp='git push'" >> ~/.bash_aliases
-echo "alias gtl='git log --color --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --'" >> ~/.bash_aliases
-echo "" >> ~/.bash_aliases
+echo "# Git" >> $fileAlias
+echo "alias gts='git status'" >> $fileAlias
+echo "alias gta='git add -A'" >> $fileAlias
+echo "alias gtm='git commit -m '$1''" >> $fileAlias
+echo "alias gtp='git push'" >> $fileAlias
+echo "alias gtl='git log --color --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --'" >> $fileAlias
+echo "" >> $fileAlias
 ;;
-[Nn]* ) echo "Not installing ${bold}mariadb${normal}" ;;
-* ) echo "Please answer yes or no. Your installation now will continue not installing ${bold}mariadb${normal}";;
+[Nn]* ) echo "Not installing ${bold}git${normal}" ;;
+* ) echo "Please answer yes or no. Your installation now will continue not installing ${bold}git${normal}";;
 esac
 
 
-
-echo "Adding some extra feaures you might like..."
+echo ""
 ##	COUNT LINES	##
-echo "##	COUNT LINES	##"
-echo "clines () { " >> ~/.bash_aliases
-echo "	if [ -z '\$1' ]; then" >> ~/.bash_aliases
-echo "        echo 'At least give one file type by parameter'" >> ~/.bash_aliases
-echo "        elif  [ -z '\$2' ]; then" >> ~/.bash_aliases
-echo "            find -type f -name "*.$1" -o -name "*.$2" | xargs wc -l | sort -n" >> ~/.bash_aliases
-echo "        elif  [ -z '\$3' ]; then" >> ~/.bash_aliases
-echo "            find -type f -name "*.$1" -o -name "*.$2" -o -name "*.$3" | xargs wc -l | sort -n" >> ~/.bash_aliases
-echo "        elif  [ -z '\$4' ]; then" >> ~/.bash_aliases
-echo "            find -type f -name "*.$1" -o -name "*.$2" -o -name "*.$3" -o -name "*.$4" | xargs wc -l | sort -n" >> ~/.bash_aliases
-echo "        elif  [ -z '\$5' ]; then" >> ~/.bash_aliases
-echo "            find -type f -name "*.$1" -o -name "*.$2" -o -name "*.$3" -o -name "*.$4" -o -name "*.$5" | xargs wc -l | sort -n" >> ~/.bash_aliases
-echo "	fi" >> ~/.bash_aliases
-echo "} " >> ~/.bash_aliases
-echo "">> ~/.bash_aliases
+echo "${red}clines${normal} counts the lines of a folder and it's subdirectories from selected file types"
+read -p "Do you wish to install ${red}${bold}clines${normal} aliases? [Yy/Nn] " yn
+case $yn in
+	[Yy]* ) 
+echo "##	COUNT LINES	##">> $fileAlias
+echo "clines () { " >> $fileAlias
+echo "	if [ -z '\$1' ]; then" >> $fileAlias
+echo "        echo 'At least give one file type by parameter'" >> $fileAlias
+echo "        elif  [ -z '\$2' ]; then" >> $fileAlias
+echo "            find -type f -name "*.$1" -o -name "*.$2" | xargs wc -l | sort -n" >> $fileAlias
+echo "        elif  [ -z '\$3' ]; then" >> $fileAlias
+echo "            find -type f -name "*.$1" -o -name "*.$2" -o -name "*.$3" | xargs wc -l | sort -n" >> $fileAlias
+echo "        elif  [ -z '\$4' ]; then" >> $fileAlias
+echo "            find -type f -name "*.$1" -o -name "*.$2" -o -name "*.$3" -o -name "*.$4" | xargs wc -l | sort -n" >> $fileAlias
+echo "        elif  [ -z '\$5' ]; then" >> $fileAlias
+echo "            find -type f -name "*.$1" -o -name "*.$2" -o -name "*.$3" -o -name "*.$4" -o -name "*.$5" | xargs wc -l | sort -n" >> $fileAlias
+echo "	fi" >> $fileAlias
+echo "} " >> $fileAlias
+echo "">> $fileAlias
+;;
+[Nn]* ) echo "Not installing ${bold}mariadb${normal}" ;;
+* ) echo "Please answer yes or no. Your installation now will continue not installing ${bold}clines${normal}";;
+esac
+echo ""
 
 
 
 ##	neofetch	##
-echo "alias sysinfo='neofetch'">> ~/.bash_aliases
-echo "">> ~/.bash_aliases
+echo "${red}sysinfo${normal} is an alias for neofetch"
+read -p "Do you wish to install ${red}${bold}sysinfo${normal} aliases? [Yy/Nn] " yn
+case $yn in
+	[Yy]* ) 
+echo "alias sysinfo='neofetch'">> $fileAlias
+echo "">> $fileAlias
+;;
+[Nn]* ) echo "Not installing ${bold}sysinfo${normal}" ;;
+* ) echo "Please answer yes or no. Your installation now will continue not installing ${bold}sysinfo${normal}";;
+esac
+echo ""
+
+
+
+##	Sensors	##
+echo "${red}temp${normal} is an alias for sensors"
+read -p "Do you wish to install ${red}${bold}temp${normal} alias? [Yy/Nn] " yn
+case $yn in
+	[Yy]* ) 
+	echo "">> $fileAlias
+echo "alias temp='sensors'">> $fileAlias
+echo "">> $fileAlias
+;;
+[Nn]* ) echo "Not installing ${bold}temp${normal}" ;;
+* ) echo "Please answer yes or no. Your installation now will continue not installing ${bold}temp${normal}";;
+esac
+echo ""
 
 
 
 ## Extra Linux	##
-echo "#Extra linux commands"
-echo "alias mkdir='mkdir -pv'">> ~/.bash_aliases
-echo "alias ping='time ping -c 7'">> ~/.bash_aliases
-echo "alias rm='rm -v'">> ~/.bash_aliases
-echo "alias mv='mv -v'">> ~/.bash_aliases
-echo "alias calc='bc -l'">> ~/.bash_aliases
-echo "">> ~/.bash_aliases
-echo "#End of Jose's bashrc modification">> ~/.bash_aliases
+echo "A lot of common commands for ${red}linux terminal${normal}"
+read -p "Do you wish to install ${red}${bold}extra system linux${normal} aliases? [Yy/Nn] " yn
+case $yn in
+	[Yy]* ) 
+echo "#Extra linux commands">> $fileAlias
+echo "alias mkdir='mkdir -pv'">> $fileAlias
+echo "alias ping='time ping -c 7'">> $fileAlias
+echo "alias rm='rm -v'">> $fileAlias
+echo "alias mv='mv -v'">> $fileAlias
+echo "alias calc='bc -l'">> $fileAlias
+echo "">> $fileAlias
+echo "# might fix some sudo + alias problems" >> $fileAlias
+echo "alias sudo='sudo '" >> $fileAlias
+echo "" >> $fileAlias
+echo "# An alias to save some miliseconds of your time :) " >> $fileAlias
+echo "alias sudos='sudo -s' " >> $fileAlias
+echo "alias suspend='systemctl suspend'" >> $fileAlias
+echo "alias hibernate='systemctl hibernate'" >> $fileAlias
+echo "">> $fileAlias
+;;
+[Nn]* ) echo "Not installing ${bold}extra system linux${normal}" ;;
+* ) echo "Please answer yes or no. Your installation now will continue not installing ${bold}extra system linux${normal}";;
+esac
+echo "#End of Jose's bashrc modification">> $fileAlias
 
 
 
 ##	Checking if .bash_aliases is enabled in .bashrc file	##
 if ! grep -q -x -F -e "$line" <"$file"; then
-	echo "Enabling .bash_aliases in your .bashrc file"
+	echo "${underline}Enabling${normal} .bash_aliases in your .bashrc file"
     echo "" >> "$file"
-	echo "if [ -f ~/.bash_aliases ]; then" >> "$file"
+	echo "if [ -f $fileAlias ]; then" >> "$file"
     printf '%s\n' "$line" >>"$file"
 	echo "fi" >> "$file"
 	echo "" >> "$file"
@@ -232,8 +286,8 @@ fi
 ## Updating bash_aliases, so we can use the aliases without rebooting.	##
 echo ""
 echo "Updating bashrc's..."
-source ~/.bash_aliases
-. ~/.bash_aliases
+source $fileAlias
+. $fileAlias
 source ~/.bashrc
 . ~/.bashrc
 
@@ -241,11 +295,17 @@ source ~/.bashrc
 
 ##	Final echos	##
 echo ""
-echo "${bold}All done.${normal} "
-echo ""
+echo "${bold}    ____  ____  _   ________";
+echo "   / __ \/ __ \/ | / / ____/";
+echo "  / / / / / / /  |/ / __/   ";
+echo " / /_/ / /_/ / /|  / /___   ";
+echo "/_____/\____/_/ |_/_____/   ";
+echo "                            ";
+echo "${normal}"
 echo "You will find more information and in the ${purple}README.MD${normal} file :)"
 echo "${bold}${underline}https://github.com/Josee9988/bashrcralias${normal}"
 echo ""
 echo "Thanks for using ${underline}Jose's .bash_aliases modification${normal}"
+echo ""
 
 exit

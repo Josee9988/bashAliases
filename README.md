@@ -54,12 +54,6 @@ Although its meant to be checked automatically by the script.
 - **statusmaria**: For knowing the status of mariadb.service
 - **usemaria**: For joining mysql as a root using password
 
-### System
-
-- **sudos**: Instead of sudo -s
-- **hibernate**: Instead of systemctl hibernate
-- **suspend**: Instead of systemctl suspend
-
 ### Git
 
 - **gts**: For git status
@@ -78,14 +72,18 @@ Although its meant to be checked automatically by the script.
 - **clines 'extension' 'extension'**: Counts the lines of 4 different file extensions.
 - **clines 'extension' 'extension'**: Counts the lines of 5 different file extensions.
 
-### Neofetch
-
-- **sysinfo**: An alias for 'neofetch'.
-
 ### Extra linux system
 
+- **sudos**: Instead of sudo -s
+- **hibernate**: Instead of systemctl hibernate
+- **suspend**: Instead of systemctl suspend
 - **mkdir**: For mkdir -pv
 - **ping**: For time ping -c 7
 - **calc**: For bc -l
 - **rm**: For rm -v
 - **mv**: For mv -v
+
+### Extra programs
+
+- **sysinfo**: An alias for 'neofetch'.
+- **temp**: An alias for 'sensors'.
