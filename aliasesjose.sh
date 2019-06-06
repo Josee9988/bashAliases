@@ -205,6 +205,18 @@ echo "">> ~/.bash_aliases
 
 
 
+## Extra Linux	##
+echo "#Extra linux commands"
+echo "alias mkdir='mkdir -pv'">> ~/.bash_aliases
+echo "alias ping='time ping -c 7'">> ~/.bash_aliases
+echo "alias rm='rm -v'">> ~/.bash_aliases
+echo "alias mv='mv -v'">> ~/.bash_aliases
+echo "alias calc='bc -l'">> ~/.bash_aliases
+echo "">> ~/.bash_aliases
+echo "#End of Jose's bashrc modification">> ~/.bash_aliases
+
+
+
 ##	Checking if .bash_aliases is enabled in .bashrc file	##
 if ! grep -q -x -F -e "$line" <"$file"; then
 	echo "Enabling .bash_aliases in your .bashrc file"
@@ -217,9 +229,9 @@ fi
 
 
 
-# Updating bash_aliases, so we can use the aliases without rebooting.
+## Updating bash_aliases, so we can use the aliases without rebooting.	##
 echo ""
-echo "Updating bashrc..."
+echo "Updating bashrc's..."
 source ~/.bash_aliases
 . ~/.bash_aliases
 source ~/.bashrc
@@ -227,31 +239,13 @@ source ~/.bashrc
 
 
 
-##	MENSAJES FINALES	##
+##	Final echos	##
 echo ""
 echo "${bold}All done.${normal} "
-echo "To try them out please type or '${bold}updateff${normal}', '${bold}updatef${normal}' or '${bold}cleanf${normal}' this three only always as a ${bold}${underline}Superuser${normal}."
-echo "To use '${bold}updatef${normal}', or '${bold}updateff${normal}' or '${bold}cleanf${normal}' first use ${red}sudo -s${normal} or neither will work"
 echo ""
-echo "You can use '${bold}updateff${normal}' to use 'updatef' and 'cleanf' at once!"
-echo ""
-echo "To use the ${bold}cd's${normal} just write from one to five dots '${bold}.${normal}' '${bold}..${normal}' '${bold}...${normal}' '${bold}....${normal}' '${bold}.....${normal}' to navigate back to folders."
-echo ""
-echo "If you want to use the ${bold}extract${normal}, write it and after a compressed file (${bold}.rar, bz2, tar.gz${normal}, etc). Ex: extract compressed.rar"
-echo ""
-echo "To use the ${bold}mariadb${normal} commands just type '${bold}startmaria${normal}', '${bold}stopmaria${normal}' or '${bold}statusmaria${normal}' to start, stop or know the status of ${underline}mariadb.service${normal} "
-echo "Or ${bold}usemaria${normal} for using mysql in root mode with password"
-echo ""
-echo "For using the ${bold}git${normal} commands use: ${red}gts${normal} for git status. ${red}gta${normal} for git add -A ${red}gtm ${bold}'your message'${normal} for git commit -m  ${red}gtp${normal} for git push and ${red}gtl${normal} for git log."
-echo ""
-echo "Also try ${bold}sudos${normal} instead of '${bold}sudo -s${normal}'. Use ${bold}suspend${normal} or ${bold}hibernate${normal} instead of systemctl suspend/hibernate."
-echo "Don't ever do cd ~/Desktop or cd ~/.local/share/Trash/... now just use ${red}cdDesktop${normal} or ${red}cdDocuments${normal} or ${red}cdTrash${normal}..."
-echo ""
-echo "Use ${bold}cLines${normal} and give from 1 to 5 tipe of files and it will count all the lines"
-echo ""
-echo ""
-echo "You will find more information and more detailed in the ${purple}README.MD${normal} file :)"
+echo "You will find more information and in the ${purple}README.MD${normal} file :)"
 echo "${bold}${underline}https://github.com/Josee9988/bashrcralias${normal}"
+echo ""
 echo "Thanks for using ${underline}Jose's .bash_aliases modification${normal}"
 
 exit

@@ -1,5 +1,7 @@
 # **ALIASESJOSE**
 
+*My personal aliases.*
+
 ---
 
 Shell script that adds several aliases to your '*~/bash_aliases*' file.
@@ -34,7 +36,7 @@ Although its meant to be checked automatically by the script.
 
 ### Easy navigation to main folders
 
-`It also allows lowercase in the name of the folder`
+`It also allows lowercase in the name of the folder ex: cddesktop`
 
 - **cdDesktop**: to go to the desktop
 - **cdDocuments**: to go to documents
@@ -79,3 +81,11 @@ Although its meant to be checked automatically by the script.
 ### Neofetch
 
 - **sysinfo**: An alias for 'neofetch'.
+
+### Extra linux system
+
+- **mkdir**: For mkdir -pv
+- **ping**: For time ping -c 7
+- **calc**: For bc -l
+- **rm**: For rm -v
+- **mv**: For mv -v
