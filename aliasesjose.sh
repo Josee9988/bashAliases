@@ -195,13 +195,13 @@ echo "clines () { " >> $fileAlias
 echo "	if [ -z \$1 ]; then" >> $fileAlias
 echo "        echo 'At least give one file type by parameter'" >> $fileAlias
 echo "        elif  [ -z \$2 ]; then" >> $fileAlias
-echo "            find -type f -name "*.$1" -o -name "*.$2" | xargs wc -l | sort -n" >> $fileAlias
+echo "            find -type f -name \"*.\$1\" -o -name \"*.\$2\" | xargs wc -l | sort -n" >> $fileAlias
 echo "        elif  [ -z \$3 ]; then" >> $fileAlias
-echo "            find -type f -name "*.$1" -o -name "*.$2" -o -name "*.$3" | xargs wc -l | sort -n" >> $fileAlias
+echo "            find -type f -name \"*.\$1\" -o -name \"*.\$2\" -o -name \"*.\$3\" | xargs wc -l | sort -n" >> $fileAlias
 echo "        elif  [ -z \$4 ]; then" >> $fileAlias
-echo "            find -type f -name "*.$1" -o -name "*.$2" -o -name "*.$3" -o -name "*.$4" | xargs wc -l | sort -n" >> $fileAlias
+echo "            find -type f -name \"*.\$1\" -o -name \"*.\$2\" -o -name \"*.\$3\" -o -name \"*.\$4\" | xargs wc -l | sort -n" >> $fileAlias
 echo "        elif  [ -z \$5 ]; then" >> $fileAlias
-echo "            find -type f -name "*.$1" -o -name "*.$2" -o -name "*.$3" -o -name "*.$4" -o -name "*.$5" | xargs wc -l | sort -n" >> $fileAlias
+echo "            find -type f -name \"*.\$1\" -o -name \"*.\$2\" -o -name \"*.\$3\" -o -name \"*.\$4\" -o -name \"*.\$5\" | xargs wc -l | sort -n" >> $fileAlias
 echo "	fi" >> $fileAlias
 echo "} " >> $fileAlias
 echo "">> $fileAlias
@@ -304,7 +304,9 @@ echo " / /_/ / /_/ / /|  / /___   ";
 echo "/_____/\____/_/ |_/_____/   ";
 echo "                            ";
 echo "${normal}"
-echo "You will find more information and in the ${purple}README.MD${normal} file :)"
+echo "We recomend you to ${bold}restart${normal} your ${underline}shell${normal} and ${bold}read${normal} the ${underline}README${normal} file in github to check the aliases."
+echo ""
+echo "You will find more information and in the ${bold}${purple}README.MD${normal} file :)"
 echo "${bold}${underline}https://github.com/Josee9988/bashrcralias${normal}"
 echo ""
 echo "Thanks for using ${underline}Jose's .bash_aliases modification${normal}"
