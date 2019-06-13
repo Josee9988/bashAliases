@@ -263,6 +263,7 @@ echo "# An alias to save some miliseconds of your time :) " >> $fileAlias
 echo "alias sudos='sudo -s' " >> $fileAlias
 echo "alias suspend='systemctl suspend'" >> $fileAlias
 echo "alias hibernate='systemctl hibernate'" >> $fileAlias
+echo "alias defrag='sudo e4defrag -vc '\$1''" >> $fileAlias
 echo "">> $fileAlias
 ;;
 [Nn]* ) echo "Not installing ${bold}extra system linux${normal}" ;;

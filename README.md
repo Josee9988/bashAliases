@@ -82,6 +82,7 @@ Although its meant to be checked automatically by the script.
 - **calc**: For bc -l
 - **rm**: For rm -v
 - **mv**: For mv -v
+- **defrag**: e4defrag -vc $1 (Ex: defrag /dev/sdb1)
 
 ### Extra programs
 
