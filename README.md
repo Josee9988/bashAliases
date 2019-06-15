@@ -1,6 +1,6 @@
 # **ALIASESJOSE**
 
-*My personal aliases.*
+**My personal aliases and scripts, all in one!.**
 
 ---
 
@@ -8,11 +8,11 @@ Shell script that adds several aliases to your '*~/bash_aliases*' file.
 
 If it is not working you may check that in your '*~/.bashrc*' file you have:
 
-```` bash
+``` bash
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-````
+```
 
 Although its meant to be checked automatically by the script.
 
@@ -36,7 +36,7 @@ Although its meant to be checked automatically by the script.
 
 ### Easy navigation to main folders
 
-`It also allows lowercase in the name of the folder ex: cddesktop`
+ `It also allows lowercase in the name of the folder ex: cddesktop` 
 
 - **cdDesktop**: to go to the desktop
 - **cdDocuments**: to go to documents
@@ -61,10 +61,11 @@ Although its meant to be checked automatically by the script.
 - **gtm "$1"**: For git commit -m
 - **gtl**: For git color formatted with colors
 - **gtp**: For git push
+- **gtCreate**: Creates a new repository and initializes it. Uses curl and GitHub's API
 
 ### Counting lines
 
-`Example: "clines java css html": will output the number of lines of all the files that are *.java, *.css or *.html. Searched recursively through all subdirectories`
+ `Example: "clines java css html": will output the number of lines of all the files that are *.java, *.css or *.html. Searched recursively through all subdirectories` 
 
 - **clines 'extension'**: Counts the lines of 1 file extension.
 - **clines 'extension' 'extension'**: Counts the lines of 2 different file extensions.
