@@ -43,7 +43,7 @@ case $yn in
 	echo "#updatef Will check for updates for normal software installed and also for your distro and after all" >>$fileAlias
 	echo "#cleanf will clean trash that you don't really need and will check if any installation has gone through any error." >>$fileAlias
 	echo "alias updatef='echo "Downloading software" && echo "" && apt-get update && echo "Updating distro" && echo "" && apt dist-upgrade && echo "" && echo "Upgrading software" && echo "" && apt-get upgrade'" >>$fileAlias
-	echo "alias cleanf='echo "Cleaning trash..." && rm -rf /tmp/* && echo "" && apt-get autoclean && rm -rf ~/.local/share/Trash/* && echo "" && echo "Removing and checking failed installations" && echo "" && apt-get autoremove && apt-get clean && apt-get check && apt install -f'" >>$fileAlias
+	echo "alias cleanf='echo "Cleaning trash..." && rm -rf /tmp/* && echo "" && apt-get autoclean && echo "" && echo "Removing and checking failed installations" && echo "" && apt-get autoremove && apt-get clean && apt-get check && apt install -f'" >>$fileAlias
 	echo "" >>$fileAlias
 	echo "# For all the update and upgrades and after that cleans your system. Updatef + cleanf all in one command" >>$fileAlias
 	echo "alias updateff='updatef && cleanf'" >>$fileAlias
