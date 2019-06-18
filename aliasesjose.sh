@@ -186,22 +186,22 @@ case $yn in
 	echo "" >>$fileAlias
 	echo '    read -p "Do you wish to make the repository private?[Yy/Nn]: " yn' >>$fileAlias
 	echo "    case \$yn in" >>$fileAlias
-	echo "        [Yy]* )" >>$fileAlias
+	echo "    [Yy]* )" >>$fileAlias
 	echo "        curl -u \"\$email\" https://api.github.com/user/repos -d '{\"name\":\"'\$name'\",\"private\":\"true\",\"description\":\"'\$description'\"}'" >>$fileAlias
 	echo "        ;;" >>$fileAlias
-	echo "        [Nn]* )" >>$fileAlias
+	echo "    [Nn]* )" >>$fileAlias
 	echo "        curl -u \"\$email\" https://api.github.com/user/repos -d '{\"name\":\"'\$name'\",\"description\":\"'\$description'\"}'" >>$fileAlias
 	echo "        ;;" >>$fileAlias
-	echo "        * ) echo 'Please answer yes or no. Your installation will be aborted. Try again'" >>$fileAlias
+	echo "    * ) echo 'Please answer yes or no. Your installation will be aborted. Try again'" >>$fileAlias
 	echo "        cancel=true" >>$fileAlias
 	echo "        ;;" >>$fileAlias
 	echo "    esac" >>$fileAlias
 	echo "" >>$fileAlias
 	echo "    #creating local folder and initializating git" >>$fileAlias
 	echo "    if [ \$cancel == false ]; then" >>$fileAlias
-	echo "    mkdir -pv \$name" >>$fileAlias
-	echo "    cd \$name" >>$fileAlias
-	echo "    git init" >>$fileAlias
+	echo "    	mkdir -pv \$name" >>$fileAlias
+	echo "    	cd \$name" >>$fileAlias
+	echo "    	git init" >>$fileAlias
 	echo "    fi" >>$fileAlias
 	echo "}" >>$fileAlias
 	echo "" >>$fileAlias
@@ -219,15 +219,15 @@ case $yn in
 	echo "##	COUNT LINES	##" >>$fileAlias
 	echo "clines () { " >>$fileAlias
 	echo "	if [ -z \$1 ]; then" >>$fileAlias
-	echo "        echo 'At least give one file type by parameter'" >>$fileAlias
-	echo "        elif  [ -z \$2 ]; then" >>$fileAlias
-	echo "            find -type f -name \"*.\$1\" -o -name \"*.\$2\" | xargs wc -l | sort -n" >>$fileAlias
-	echo "        elif  [ -z \$3 ]; then" >>$fileAlias
-	echo "            find -type f -name \"*.\$1\" -o -name \"*.\$2\" -o -name \"*.\$3\" | xargs wc -l | sort -n" >>$fileAlias
-	echo "        elif  [ -z \$4 ]; then" >>$fileAlias
-	echo "            find -type f -name \"*.\$1\" -o -name \"*.\$2\" -o -name \"*.\$3\" -o -name \"*.\$4\" | xargs wc -l | sort -n" >>$fileAlias
-	echo "        elif  [ -z \$5 ]; then" >>$fileAlias
-	echo "            find -type f -name \"*.\$1\" -o -name \"*.\$2\" -o -name \"*.\$3\" -o -name \"*.\$4\" -o -name \"*.\$5\" | xargs wc -l | sort -n" >>$fileAlias
+	echo "		echo 'At least give one file type by parameter'" >>$fileAlias
+	echo "	elif  [ -z \$2 ]; then" >>$fileAlias
+	echo "		find -type f -name \"*.\$1\" -o -name \"*.\$2\" | xargs wc -l | sort -n" >>$fileAlias
+	echo "	elif  [ -z \$3 ]; then" >>$fileAlias
+	echo "		find -type f -name \"*.\$1\" -o -name \"*.\$2\" -o -name \"*.\$3\" | xargs wc -l | sort -n" >>$fileAlias
+	echo "	elif  [ -z \$4 ]; then" >>$fileAlias
+	echo "		find -type f -name \"*.\$1\" -o -name \"*.\$2\" -o -name \"*.\$3\" -o -name \"*.\$4\" | xargs wc -l | sort -n" >>$fileAlias
+	echo "	elif  [ -z \$5 ]; then" >>$fileAlias
+	echo "		find -type f -name \"*.\$1\" -o -name \"*.\$2\" -o -name \"*.\$3\" -o -name \"*.\$4\" -o -name \"*.\$5\" | xargs wc -l | sort -n" >>$fileAlias
 	echo "	fi" >>$fileAlias
 	echo "} " >>$fileAlias
 	echo "" >>$fileAlias
@@ -284,6 +284,12 @@ case $yn in
 	echo "alias suspend='systemctl suspend'" >>$fileAlias
 	echo "alias hibernate='systemctl hibernate'" >>$fileAlias
 	echo "alias defrag='sudo e4defrag -vc '\$1''" >>$fileAlias
+	echo "alias sysinf='cat /etc/os-release'" >>$fileAlias
+	echo "alias ram='free -h'" >>$fileAlias
+	echo "dusage() {" >>$fileAlias
+	echo "	du -hsBM \"\$1\"* | sort -n" >>$fileAlias
+	echo "}" >>$fileAlias
+
 	echo "" >>$fileAlias
 	;;
 [Nn]*) echo "Not installing ${bold}extra system linux${normal}" ;;
@@ -319,9 +325,10 @@ echo " / /_/ / /_/ / /|  / /___   "
 echo "/_____/\____/_/ |_/_____/   "
 echo "                            "
 echo "${normal}"
-echo "We recomend you to ${bold}restart${normal} your ${underline}shell${normal} and ${bold}read${normal} the ${underline}README${normal} file in github to check the aliases."
+echo "We recomend you to ${bold}restart${normal} your ${underline}terminal${normal} and ${bold}read${normal} the ${underline}README${normal} file in github to check the aliases."
 echo ""
 echo "You will find more information and in the ${bold}${purple}README.MD${normal} file :)"
+echo ""
 echo "${bold}${underline}https://github.com/Josee9988/bashrcralias${normal}"
 echo ""
 echo "Thanks for using ${underline}Jose's .bash_aliases modification${normal}"

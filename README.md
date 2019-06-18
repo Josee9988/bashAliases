@@ -2,19 +2,24 @@
 
 **My personal aliases and scripts, all in one!.**
 
----
-
 Shell script that adds several aliases to your '*~/bash_aliases*' file.
 
-If it is not working you may check that in your '*~/.bashrc*' file you have:
+You can choose wich ones to install in the installation script.
+
+Made in ubuntu, and the 'updating and cleaning' aliases is completelly focused in apt packages.
+
+---
+
+## How to run the installation script ⚙️
+
+To execute it and add the aliases you want use
 
 ``` bash
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+chmod +x aliasesjose.sh
+./aliasesjose.sh
 ```
 
-Although its meant to be checked automatically by the script.
+And the script will guide you and will let you check what aliases you want to install.
 
 ---
 
@@ -22,9 +27,9 @@ Although its meant to be checked automatically by the script.
 
 ### For updating and cleaning your system
 
-- **updatef**: For updating and upgrading your system and distro.
-- **cleanf**: For cleaning trash and checking if the installations are correct.
-- **updateff**: For using *updatef* and then *cleanf* (recommended).
+- **updatef**: For updating and upgrading your system and distro. *Remember to execute as sudo*
+- **cleanf**: For cleaning trash and checking if the installations are correct. *Remember to execute as sudo*
+- **updateff**: For using *updatef* and then *cleanf* (recommended). *Remember to execute as sudo*
 
 ### Easy navigation with *cd*
 
@@ -36,7 +41,7 @@ Although its meant to be checked automatically by the script.
 
 ### Easy navigation to main folders
 
- `It also allows lowercase in the name of the folder ex: cddesktop` 
+ `It also allows lowercase in the name of the folder ex: "cddesktop" works the same as "cdDesktop" and so on.` 
 
 - **cdDesktop**: to go to the desktop
 - **cdDocuments**: to go to documents
@@ -83,9 +88,12 @@ Although its meant to be checked automatically by the script.
 - **calc**: For bc -l
 - **rm**: For rm -v
 - **mv**: For mv -v
-- **defrag**: e4defrag -vc $1 (Ex: defrag /dev/sdb1)
+- **defrag**: For e4defrag -vc $1 (Ex: defrag /dev/sdb1) *Remember to execute as sudo*
+- **sysinf**: For cat /etc/os-release. Info of the operating system
+- **ram**: For free -h. For knowing the RAM used and free
+- **dusage**: For knowing the disk usage of the folders, you might specify a folder or it will select the current one.
 
-### Extra programs
+### Extra aliases of programs
 
 - **sysinfo**: An alias for 'neofetch'.
 - **temp**: An alias for 'sensors'.
