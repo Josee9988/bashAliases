@@ -41,7 +41,7 @@ And the script will guide you and will let you check what aliases you want to in
 
 ### Easy navigation to main folders
 
- `It also allows lowercase in the name of the folder ex: "cddesktop" works the same as "cdDesktop" and so on.` 
+ `It also allows lowercase in the name of the folder ex: "cddesktop" works the same as "cdDesktop" and so on.`
 
 - **cdDesktop**: to go to the desktop
 - **cdDocuments**: to go to documents
@@ -70,7 +70,7 @@ And the script will guide you and will let you check what aliases you want to in
 
 ### Counting lines
 
- `Example: "clines java css html": will output the number of lines of all the files that are *.java, *.css or *.html. Searched recursively through all subdirectories` 
+ `Example: "clines java css html": will output the number of lines of all the files that are *.java, *.css or *.html. Searched recursively through all subdirectories`
 
 - **clines 'extension'**: Counts the lines of 1 file extension.
 - **clines 'extension' 'extension'**: Counts the lines of 2 different file extensions.
@@ -97,3 +97,8 @@ And the script will guide you and will let you check what aliases you want to in
 
 - **sysinfo**: An alias for 'neofetch'.
 - **temp**: An alias for 'sensors'.
+
+#### Acknowledgements
+
+- Extract was found in: [@idev247](https://gist.github.com/idev247/823464).
+- Cd's was found in: [linux101hacks.com](https://linux.101hacks.com/cd-command/cd-alias/).
