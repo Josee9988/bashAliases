@@ -4,9 +4,9 @@
 
 Shell script that adds several aliases to your '*~/bash_aliases*' file.
 
-You can choose wich ones to install in the installation script.
+You can **choose wich ones** to install in the **installation script**.
 
-Made in ubuntu, and the 'updating and cleaning' aliases is completelly focused in apt packages.
+Made in ubuntu, and the 'updating and cleaning' aliases is completelly focused in **apt packages**.
 
 ---
 
@@ -92,6 +92,7 @@ And the script will guide you and will let you check what aliases you want to in
 - **sysinf**: For cat /etc/os-release. Info of the operating system
 - **ram**: For free -h. For knowing the RAM used and free
 - **dusage**: For knowing the disk usage of the folders, you might specify a folder or it will select the current one.
+- **c**: For clearing the shell.
 
 ### Extra aliases of programs
 

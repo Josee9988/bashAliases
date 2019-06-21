@@ -7,10 +7,10 @@
 #				system commands suspend hibernate. sudos instead of sudo -s. extract commands, counting lines of types of file, etc...
 # TITLE:        aliasesjose.sh
 # AUTHOR:       Jose Gracia
-# VERSION:      1.5
-# NOTES:        If none of the aliases work check that in your ~/.bashrc you have a line like: . $fileAlias which is surrounded by an if.
+# VERSION:      1.0 Release
+# NOTES:        If none of the aliases work check that in your ~/.bashrc you have a line like: .~/.bash_aliases which is surrounded by an if.
 #				If this is not in your linux distro add it yourself.
-# BASH_VERSION: GNU bash, version 4.4.19(1)-release (x86_64-pc-linux-gnu)
+# BASH_VERSION: GNU bash, 5.0.0-17-generic #18-Ubuntu SMP Tue Jun 4 15:34:08 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
 # LICENSE:      GNU General Public License v3.0
 # GITHUB:       https://github.com/Josee9988/
 # MAIL:         jgracia9988@gmail.com
@@ -310,6 +310,7 @@ case $yn in
 		echo "dusage() {"
 		echo "	du -hsBM \"\$1\"* | sort -n"
 		echo "}"
+		echo "alias c='clear'"
 		echo ""
 	} >>$fileAlias
 	;;
@@ -322,11 +323,13 @@ echo "#End of Jose's bashrc modification" >>$fileAlias
 if ! grep -q -x -F -e "$lineSearch" <"$file"; then
 	echo ""
 	echo "${underline}Enabling${normal} .bash_aliases in your .bashrc file"
-	echo "" >>$file
-	echo "if [ -f ~/.bash_aliases ]; then" >>$file
-	printf '%s\n' "$line" >>$file
-	echo "fi" >>"$file"
-	echo "" >>"$file"
+	{
+		echo ""
+		echo "if [ -f ~/.bash_aliases ]; then"
+		printf '%s\n' "$line"
+		echo "fi"
+		echo ""
+	} >>$file
 fi
 
 ## Updating bash_aliases, so we can use the aliases without rebooting.	##
