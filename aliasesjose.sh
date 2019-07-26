@@ -15,6 +15,7 @@
 # GITHUB:       https://github.com/Josee9988/
 # MAIL:         jgracia9988@gmail.com
 #~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#
+# shellcheck disable=SC1090 disable=1117
 
 bold=$(echo -en "\e[1m")
 normal=$(echo -en "\e[0m")
@@ -174,8 +175,17 @@ case $yn in
 		echo "alias gts='git status'"
 		echo "alias gta='git add -A'"
 		echo "alias gtm='git commit -m '$1''"
-		echo "alias gtp='git push'"
+		echo "alias gtam='git commit -a -m '$1''"
+		echo "alias gtt='git tag '$1' -m '$2''"
+		echo "alias gtps='git push'"
+		echo "alias gps='git push'"
+		echo "alias gpl='git pull'"
+		echo "alias gtpl='git pull'"
+		echo "alias gtp+='git push'"
+		echo "alias gtp-='git pull'"
 		echo "alias gtl='git log --color --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --'"
+		echo "alias gtshow='git show'"
+		echo "alias gtstash='git stash'"
 		echo ""
 		echo "#Create GitHub repository from terminal using GitHub API, with curl"
 		echo "gtCreate () {"

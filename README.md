@@ -6,7 +6,7 @@ Shell script that adds several aliases to your '*~/bash_aliases*' file.
 
 You can **choose wich ones** to install in the **installation script**.
 
-Made in ubuntu, and the 'updating and cleaning' aliases is completelly focused in **apt packages**.
+Made in ubuntu, and the 'updating and cleaning' aliases is focused in **apt packages**.
 
 ---
 
@@ -63,10 +63,19 @@ And the script will guide you and will let you check what aliases you want to in
 
 - **gts**: For git status
 - **gta**: For git add -a
-- **gtm "$1"**: For git commit -m
+- **gtm "comment"**: For git commit -m
+- **gtam "comment"**: For git commit -a -m
+- **gtt "version" "comment**: For git tag "$1" -m "$2"
 - **gtl**: For git color formatted with colors
-- **gtp**: For git push
-- **gtCreate**: Creates a new repository and initializes it. Uses curl and GitHub's API
+- **gtps**: For git push
+- **gtpl**: For git pull
+- **gtp+**: For git push
+- **gtp-**: For git pull
+- **gps**: For git push
+- **gtl**: For git pull
+- **gtshow**: For git show
+- **gtstash**: For git stash
+- **gtCreate**: Creates a new repository and initializes it. Using curl and GitHub's API
 
 ### Counting lines
 
