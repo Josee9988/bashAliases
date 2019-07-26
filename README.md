@@ -75,6 +75,8 @@ And the script will guide you and will let you check what aliases you want to in
 - **gtl**: For git pull
 - **gtshow**: For git show
 - **gtstash**: For git stash
+- **gtinit**: For git init
+
 - **gtCreate**: Creates a new repository and initializes it. Using curl and GitHub's API
 
 ### Counting lines
@@ -97,6 +99,8 @@ And the script will guide you and will let you check what aliases you want to in
 - **calc**: For bc -l
 - **rm**: For rm -v
 - **mv**: For mv -v
+- **lsall**: For ls -all
+- **rmall**: For rm -R
 - **defrag**: For e4defrag -vc $1 (Ex: defrag /dev/sdb1) *Remember to execute as sudo*
 - **sysinf**: For cat /etc/os-release. Info of the operating system
 - **ram**: For free -h. For knowing the RAM used and free
