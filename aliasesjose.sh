@@ -8,8 +8,8 @@
 # TITLE:        aliasesjose.sh
 # AUTHOR:       Jose Gracia
 # VERSION:      1.0 Release
-# NOTES:        If none of the aliases work check that in your ~/.bashrc you have a line like: .~/.bash_aliases which is surrounded by an if.
-#				If this is not in your linux distro add it yourself.
+# NOTES:        If none of the aliases works to check that in your ~/.bashrc you have a line like: .~/.bash_aliases which is surrounded by an if.
+#				If this is not in your Linux distribution add it yourself.
 # BASH_VERSION: GNU bash, 5.0.0-17-generic #18-Ubuntu SMP Tue Jun 4 15:34:08 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
 # LICENSE:      GNU General Public License v3.0
 # GITHUB:       https://github.com/Josee9988/
@@ -44,9 +44,9 @@ case $yn in
 	{
 		echo ""
 		echo "#updatef and cleanf must be executed as 'Superuser$'"
-		echo "#updatef Will check for updates for normal software installed and also for your distro and after all"
+		echo "#updatef Will check for updates for normal software installed and also for your distribution and after all"
 		echo "#cleanf will clean trash that you don't really need and will check if any installation has gone through any error."
-		echo "alias updatef='echo "Downloading software" && echo "" && apt-get update && echo "Updating distro" && echo "" && apt dist-upgrade && echo "" && echo "Upgrading software" && echo "" && apt-get upgrade'"
+		echo "alias updatef='echo "Downloading software" && echo "" && apt-get update && echo "Updating distribution" && echo "" && apt dist-upgrade && echo "" && echo "Upgrading software" && echo "" && apt-get upgrade'"
 		echo "alias cleanf='echo "Cleaning trash..." && rm -rf /tmp/* && echo "" && apt-get autoclean && echo "" && echo "Removing and checking failed installations" && echo "" && apt-get autoremove && apt-get clean && apt-get check && apt install -f'"
 		echo ""
 		echo "# For all the update and upgrades and after that cleans your system. Updatef + cleanf all in one command"
@@ -83,7 +83,7 @@ esac
 
 echo ""
 ##  EXTRACT ##
-echo "You can also install '${red}${bold}extract${normal}', which will uncompress almost any kind of compressed file, you will not need to worry what command uncompresses which file, just '${red}${bold}extract${normal}'"
+echo "You can also install '${red}${bold}extract${normal}', which will uncompress almost any kind of compressed file, you will not need to worry what command decompresses which file, just '${red}${bold}extract${normal}'"
 read -p "Do you wish to install ${red}${bold}extract${normal} aliases? [Yy/Nn] " yn
 case $yn in
 [Yy]*)
@@ -147,7 +147,7 @@ case $yn in
 [Yy]*)
 	{
 		echo ""
-		echo "# dont write again ~/... "
+		echo "# do not write again ~/... "
 		echo "alias cdDesktop='cd ~/Desktop/' "
 		echo "alias cdDocuments='cd ~/Documents/' "
 		echo "alias cdDownloads='cd ~/Downloads/' "
@@ -223,7 +223,7 @@ case $yn in
 		echo "        ;;"
 		echo "    esac"
 		echo ""
-		echo "    #creating local folder and initializating git"
+		echo "    #creating local folder and initializing git"
 		echo "    if [ \$cancel == false ]; then"
 		echo "    	mkdir -pv \"\$name\""
 		echo "    	if cd \"\$name\"; then echo \"Ok\"; else echo \"Fail when executing cd \$name\" exit; fi"
@@ -289,6 +289,7 @@ case $yn in
 	{
 		echo ""
 		echo "alias temp='sensors'"
+		echo "alias tmp='sensors'"
 		echo ""
 	} >>$fileAlias
 	;;
@@ -315,7 +316,7 @@ case $yn in
 		echo "# might fix some sudo + alias problems"
 		echo "alias sudo='sudo '"
 		echo ""
-		echo "# An alias to save some miliseconds of your time :) "
+		echo "# An alias to save some milliseconds of your time :) "
 		echo "alias sudos='sudo -s' "
 		echo "alias suspend='systemctl suspend'"
 		echo "alias hibernate='systemctl hibernate'"

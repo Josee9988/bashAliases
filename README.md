@@ -1,18 +1,18 @@
 # **ALIASESJOSE**
 
-**My personal aliases and scripts, all in one!.**
+**My aliases and scripts, all in one!**
 
 Shell script that adds several aliases to your '*~/bash_aliases*' file.
 
-You can **choose wich ones** to install in the **installation script**.
+You can **choose which ones** to install in the **installation script**.
 
-Made in ubuntu, and the 'updating and cleaning' aliases is focused in **apt packages**.
+Made in ubuntu, and the 'updating and cleaning' aliases are focused in **apt packages**.
 
 ---
 
 ## How to run the installation script ⚙️
 
-To execute it and add the aliases you want use
+To execute it and add the aliases you want to use
 
 ``` bash
 chmod +x aliasesjose.sh
@@ -27,14 +27,14 @@ And the script will guide you and will let you check what aliases you want to in
 
 ### For updating and cleaning your system
 
-- **updatef**: For updating and upgrading your system and distro. *Remember to execute as sudo*
+- **updatef**: For updating and upgrading your system and distribution. *Remember to execute as sudo*
 - **cleanf**: For cleaning trash and checking if the installations are correct. *Remember to execute as sudo*
 - **updateff**: For using *updatef* and then *cleanf* (recommended). *Remember to execute as sudo*
 
 ### Easy navigation with *cd*
 
 - **cd..**: So you will not miss if you don't add that space.
-- **..**: For going back 1 folders.
+- **..**: For going back 1 folder.
 - **...**: For going back 2 folders.
 - **....**: For going back 3 folders.
 - **.....**: For going back 4 folders.
@@ -50,14 +50,14 @@ And the script will guide you and will let you check what aliases you want to in
 
 ### Easy extract
 
-- **extract $1**: Use extract + your compressed file and it will use the right decompressor. (.tar.bz2, .tar.gz, .bz2, .rar, .gz, .tar, .tbz2, .tgz, .zip, .z, .7z).
+- **extract $1**: Use extract + your compressed file and it will use the right decompresser. (.tar.bz2, .tar.gz, .bz2, .rar, .gz, .tar, .tbz2, .tgz, .zip, .z, .7z).
 
 ### Mariadb.service (mysql)
 
 - **startmaria**: For starting mariadb.service
 - **stopmaria**: For stopping mariadb.service
 - **statusmaria**: For knowing the status of mariadb.service
-- **usemaria**: For joining mysql as a root using password
+- **usemaria**: For joining mysql as root using a password
 
 ### Git
 
@@ -111,6 +111,7 @@ And the script will guide you and will let you check what aliases you want to in
 
 - **sysinfo**: An alias for 'neofetch'.
 - **temp**: An alias for 'sensors'.
+- **tmp**: An alias for 'sensors'.
 
 #### Acknowledgements
 
