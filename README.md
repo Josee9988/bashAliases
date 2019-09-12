@@ -1,6 +1,6 @@
 # **ALIASESJOSE**
 
-**My aliases and scripts, all in one!**
+**My aliases, shortcuts and scripts, all in one!**
 
 Shell script that adds several aliases to your '*~/bash_aliases*' file.
 
@@ -10,7 +10,14 @@ Made in ubuntu, and the 'updating and cleaning' aliases are focused in **apt pac
 
 ---
 
-## How to run the installation script ⚙️
+## **Download** 📥📩
+
+- Direct **[download 1.0](https://github.com/Josee9988/bashAliases/releases/download/1/aliasesjose.sh)** of the script.
+- All the **[releases](https://github.com/Josee9988/bashAliases/releases)**.
+
+---
+
+## **How to run the installation script** ⚙️
 
 To execute it and add the aliases you want to use
 
@@ -117,3 +124,7 @@ And the script will guide you and will let you check what aliases you want to in
 
 - Extract was found in: [@idev247](https://gist.github.com/idev247/823464).
 - Cd's was found in: [linux101hacks.com](https://linux.101hacks.com/cd-command/cd-alias/).
+
+> ⚠️Remember that this script does not guarantee a 100% effectiveness and may have some issue at some point. Use it at your own risk and always do backups of your data.⚠️
+
+*Made with a lot of ❤️❤️ by **[@Josee9988](https://github.com/Josee9988)***
