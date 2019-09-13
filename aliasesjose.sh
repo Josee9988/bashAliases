@@ -7,7 +7,7 @@
 #				system commands suspend hibernate. sudos instead of sudo -s. extract commands, counting lines of types of file, etc...
 # TITLE:        aliasesjose.sh
 # AUTHOR:       Jose Gracia
-# VERSION:      1.0 Release
+# VERSION:      1.1.0
 # NOTES:        If none of the aliases works to check that in your ~/.bashrc you have a line like: .~/.bash_aliases which is surrounded by an if.
 #				If this is not in your Linux distribution add it yourself.
 # BASH_VERSION: GNU bash, 5.0.0-17-generic #18-Ubuntu SMP Tue Jun 4 15:34:08 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
@@ -37,7 +37,7 @@ echo "#!/bin/bash" >>$fileAlias
 echo "### Jose's bashrc modification ###" >>$fileAlias
 
 echo "${red}${bold}updatef${normal} and ${red}${bold}cleanf${normal} aliases, updates and upgrades your system and cleans it."
-read -p "Do you wish to install ${red}${bold}updatef and cleanf${normal} aliases? [Yy/Nn] " yn
+read -p "Do you wish to install ${red}${bold}updatef and cleanf${normal} aliases? [Yy/Nn]" yn
 case $yn in
 [Yy]*)
 	##  ADDING UPDATEF, CLEANF AND UPDATEFF ##
@@ -61,7 +61,7 @@ echo ""
 ##  ADDING ..'s  ##
 echo "This file includes ${red}${bold}cd${normal} commands which makes going back from folders much faster."
 echo "Example: ${red}...${normal} now equals to cd ../../../ (you can write from ${red}two${normal} dots to ${red}five${normal} dots)"
-read -p "Do you wish to install ${red}${bold}cd${normal} aliases? [Yy/Nn] " yn
+read -p "Do you wish to install ${red}${bold}cd${normal} aliases? [Yy/Nn]" yn
 case $yn in
 [Yy]*)
 	{
@@ -84,29 +84,29 @@ esac
 echo ""
 ##  EXTRACT ##
 echo "You can also install '${red}${bold}extract${normal}', which will uncompress almost any kind of compressed file, you will not need to worry what command decompresses which file, just '${red}${bold}extract${normal}'"
-read -p "Do you wish to install ${red}${bold}extract${normal} aliases? [Yy/Nn] " yn
+read -p "Do you wish to install ${red}${bold}extract${normal} aliases? [Yy/Nn]" yn
 case $yn in
 [Yy]*)
 	{
 		echo "## Use only 'extract' for most of your compressed files. ##"
-		echo "extract () { "
-		echo "   if [ -f \"\$1\" ] ; then "
-		echo "       case \"\$1\" in "
-		echo "           *.tar.bz2)   tar xvjf \"\$1\"    ;; "
-		echo "           *.tar.gz)    tar xvzf \"\$1\"    ;; "
-		echo "           *.bz2)       bunzip2 \"\$1\"     ;; "
-		echo "           *.rar)       unrar x \"\$1\"     ;; "
-		echo "           *.gz)        gunzip \"\$1\"      ;; "
-		echo "           *.tar)       tar xvf \"\$1\"     ;; "
-		echo "           *.tbz2)      tar xvjf \"\$1\"    ;; "
-		echo "           *.tgz)       tar xvzf \"\$1\"    ;; "
-		echo "           *.zip)       unzip \"\$1\"       ;; "
-		echo "           *.Z)         uncompress \"\$1\"  ;; "
-		echo "           *.7z)        7z x \"\$1\"        ;; "
-		echo "           *)           echo \"do not know how to extract \$1 ...\" ;; "
+		echo "extract () {"
+		echo "   if [ -f \"\$1\" ] ; then"
+		echo "       case \"\$1\" in"
+		echo "           *.tar.bz2)   tar xvjf \"\$1\"    ;;"
+		echo "           *.tar.gz)    tar xvzf \"\$1\"    ;;"
+		echo "           *.bz2)       bunzip2 \"\$1\"     ;;"
+		echo "           *.rar)       unrar x \"\$1\"     ;;"
+		echo "           *.gz)        gunzip \"\$1\"      ;;"
+		echo "           *.tar)       tar xvf \"\$1\"     ;;"
+		echo "           *.tbz2)      tar xvjf \"\$1\"    ;;"
+		echo "           *.tgz)       tar xvzf \"\$1\"    ;;"
+		echo "           *.zip)       unzip \"\$1\"       ;;"
+		echo "           *.Z)         uncompress \"\$1\"  ;;"
+		echo "           *.7z)        7z x \"\$1\"        ;;"
+		echo "           *)           echo \"do not know how to extract \$1 ...\" ;;"
 		echo "       esac "
 		echo "   else "
-		echo "       echo \"\$1 is not a valid file, or has spaces in it!\" "
+		echo "       echo \"\$1 is not a valid file, or has spaces in it!\""
 		echo "   fi "
 		echo " } "
 		echo ""
@@ -119,21 +119,21 @@ esac
 echo ""
 ##  MARIADB.SERVICE ##
 echo "We also have 'mariadb' (start/stop/status/use) shortcuts"
-read -p "Do you wish to install ${red}${bold}mariadb${normal} aliases? [Yy/Nn] " yn
+read -p "Do you wish to install ${red}${bold}mariadb${normal} aliases? [Yy/Nn]" yn
 case $yn in
 [Yy]*)
 	{
-		echo "# For starting mariadb.service "
-		echo "alias startmaria='systemctl start mariadb.service' "
+		echo "# For starting mariadb.service"
+		echo "alias startmaria='systemctl start mariadb.service'"
 		echo ""
-		echo "# For stopping mariadb.service "
-		echo "alias stopmaria='systemctl stop mariadb.service' "
+		echo "# For stopping mariadb.service"
+		echo "alias stopmaria='systemctl stop mariadb.service'"
 		echo ""
-		echo "# For knowing the status of mariadb.service "
-		echo "alias statusmaria='systemctl status mariadb.service' "
+		echo "# For knowing the status of mariadb.service"
+		echo "alias statusmaria='systemctl status mariadb.service'"
 		echo ""
-		echo "# Using mysql with root "
-		echo "alias usemaria='mysql -u root -p' "
+		echo "# Using mysql with root"
+		echo "alias usemaria='mysql -u root -p'"
 	} >>$fileAlias
 	;;
 [Nn]*) echo "Not installing ${bold}mariadb${normal}" ;;
@@ -142,23 +142,51 @@ esac
 echo ""
 
 ## FAST NAVIGATION TO COMMON FOLDERS	##
-read -p "Do you wish to install ${red}${bold}easy common folder navigation${normal} aliases? [Yy/Nn] " yn
+read -p "Do you wish to install ${red}${bold}easy common folder navigation${normal} aliases? [Yy/Nn]" yn
 case $yn in
 [Yy]*)
-	{
-		echo ""
-		echo "# do not write again ~/... "
-		echo "alias cdDesktop='cd ~/Desktop/' "
-		echo "alias cdDocuments='cd ~/Documents/' "
-		echo "alias cdDownloads='cd ~/Downloads/' "
-		echo "alias cdTrash='cd ~/.local/share/Trash/' "
-		echo ""
-		echo "alias cddesktop='cd ~/Desktop/' "
-		echo "alias cddocuments='cd ~/Documents/' "
-		echo "alias cddownloads='cd ~/Downloads/' "
-		echo "alias cdtrash='cd ~/.local/share/Trash/' "
-		echo ""
-	} >>$fileAlias
+	wsl=false
+	read -p "Are you using ${red}${bold}WSL (Windows Subsystem for Linux)${normal}? [Yy/Nn]" ynwsl
+	case $ynwsl in
+	[Yy]*)
+		userName=$(cmd.exe /c 'echo %USERNAME%')
+		userName=${userName%$'\r'}
+		wsl=true
+		{
+			echo ""
+			echo "# do not write again ~/... "
+			echo "alias cdDesktop='cd /mnt/c/Users/$userName/Desktop'"
+			echo "alias cdDocuments='cd /mnt/c/Users/$userName/Documents'"
+			echo ""
+			echo "alias cddesktop='cd /mnt/c/Users/$userName/Desktop'"
+			echo "alias cddocuments='cd /mnt/c/Users/$userName/Documents'"
+			echo ""
+			echo "#Drives"
+			echo "alias cdc='cd /mnt/c/'"
+			echo "alias cdd='cd /mnt/d/'"
+			echo ""
+		} >>$fileAlias
+		;;
+	[Nn]*) echo "Not installing ${bold}WSL${normal}" ;;
+	*) echo "Please answer yes or no. Your installation now will continue not installing ${bold}easy common folder navigation${normal}" ;;
+	esac
+	if [ "$wsl" = false ]; then
+
+		{
+			echo ""
+			echo "# do not write again ~/..."
+			echo "alias cdDesktop='cd ~/Desktop/'"
+			echo "alias cdDocuments='cd ~/Documents/'"
+			echo "alias cdDownloads='cd ~/Downloads/'"
+			echo "alias cdTrash='cd ~/.local/share/Trash/'"
+			echo ""
+			echo "alias cddesktop='cd ~/Desktop/'"
+			echo "alias cddocuments='cd ~/Documents/'"
+			echo "alias cddownloads='cd ~/Downloads/'"
+			echo "alias cdtrash='cd ~/.local/share/Trash/'"
+			echo ""
+		} >>$fileAlias
+	fi
 	;;
 [Nn]*) echo "Not installing ${bold}easy common folder navigation${normal}" ;;
 *) echo "Please answer yes or no. Your installation now will continue not installing ${bold}easy common folder navigation${normal}" ;;
@@ -167,7 +195,7 @@ esac
 echo ""
 ##  GIT COMMANDS ##
 echo "We also have 'git' (status/add/commit/push/log) shortcuts"
-read -p "Do you wish to install ${red}${bold}git${normal} aliases? [Yy/Nn] " yn
+read -p "Do you wish to install ${red}${bold}git${normal} aliases? [Yy/Nn]" yn
 case $yn in
 [Yy]*)
 	{
@@ -240,7 +268,7 @@ esac
 echo ""
 ##	COUNT LINES	##
 echo "${red}clines${normal} counts the lines of a folder and it's subdirectories from selected file types"
-read -p "Do you wish to install ${red}${bold}clines${normal} aliases? [Yy/Nn] " yn
+read -p "Do you wish to install ${red}${bold}clines${normal} aliases? [Yy/Nn]" yn
 case $yn in
 [Yy]*)
 	{
@@ -268,7 +296,7 @@ echo ""
 
 ##	neofetch	##
 echo "${red}sysinfo${normal} is an alias for neofetch"
-read -p "Do you wish to install ${red}${bold}sysinfo${normal} aliases? [Yy/Nn] " yn
+read -p "Do you wish to install ${red}${bold}sysinfo${normal} aliases? [Yy/Nn]" yn
 case $yn in
 [Yy]*)
 	{
@@ -283,7 +311,7 @@ echo ""
 
 ##	Sensors	##
 echo "${red}temp${normal} is an alias for sensors"
-read -p "Do you wish to install ${red}${bold}temp${normal} alias? [Yy/Nn] " yn
+read -p "Do you wish to install ${red}${bold}temp${normal} alias? [Yy/Nn]" yn
 case $yn in
 [Yy]*)
 	{
@@ -300,7 +328,7 @@ echo ""
 
 ## Extra Linux	##
 echo "A lot of common commands for ${red}linux terminal${normal}"
-read -p "Do you wish to install ${red}${bold}extra system linux${normal} aliases? [Yy/Nn] " yn
+read -p "Do you wish to install ${red}${bold}extra system linux${normal} aliases? [Yy/Nn]" yn
 case $yn in
 [Yy]*)
 	{
@@ -316,8 +344,8 @@ case $yn in
 		echo "# might fix some sudo + alias problems"
 		echo "alias sudo='sudo '"
 		echo ""
-		echo "# An alias to save some milliseconds of your time :) "
-		echo "alias sudos='sudo -s' "
+		echo "# An alias to save some milliseconds of your time :)"
+		echo "alias sudos='sudo -s'"
 		echo "alias suspend='systemctl suspend'"
 		echo "alias hibernate='systemctl hibernate'"
 		echo "alias defrag='sudo e4defrag -vc '\"\$1\"''"

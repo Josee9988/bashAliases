@@ -12,7 +12,7 @@ Made in ubuntu, and the 'updating and cleaning' aliases are focused in **apt pac
 
 ## **Download** 📥📩
 
-- Direct **[download 1.0](https://github.com/Josee9988/bashAliases/releases/download/1/aliasesjose.sh)** of the script.
+- Direct **[download 1.1.0](https://github.com/Josee9988/bashAliases/releases/download/1.1.0/aliasesjose.sh)** of the script.
 - All the **[releases](https://github.com/Josee9988/bashAliases/releases)**.
 
 ---
@@ -52,8 +52,15 @@ And the script will guide you and will let you check what aliases you want to in
 
 - **cdDesktop**: to go to the desktop
 - **cdDocuments**: to go to documents
-- **cdDownloads**: to go to donwloads
+- **cdDownloads**: to go to downloads
 - **cdTrash**: to go to the trash
+
+#### Support for WSL (Windows Subsystem for Linux)
+
+- **cdDesktop**: to go to the Windows desktop
+- **cdDocuments**: to go to the Windows documents
+- **cdc**: to go to the Windows (C:) drive.
+- **cdd**: to go to the Windows (D:) drive.
 
 ### Easy extract
 
