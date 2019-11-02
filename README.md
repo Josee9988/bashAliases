@@ -19,7 +19,13 @@ Made in ubuntu, and the 'updating and cleaning' aliases are focused in **apt pac
 
 ## **How to run the installation script** ⚙️
 
-To execute it and add the aliases you want to use
+To execute it and add the aliases you want to use:
+
+``` bash
+bash aliasesjose.sh
+```
+
+or
 
 ``` bash
 chmod +x aliasesjose.sh
