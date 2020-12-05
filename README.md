@@ -126,6 +126,7 @@ And the script will guide you and will let you check what aliases you want to in
 - **ram**: For free -h. For knowing the RAM used and free
 - **dusage**: For knowing the disk usage of the folders, you might specify a folder or it will select the current one.
 - **c**: For clearing the shell.
+- **cpupercent**: For knowing the percentaje of use of the CPU.
 
 ### Extra aliases of programs
 
