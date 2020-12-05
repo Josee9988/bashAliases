@@ -355,7 +355,6 @@ case $yn in
 		echo "	du -hsBM \"\$1\"* | sort -n"
 		echo "}"
 		echo "alias c='clear'"
-		echo "alias cpupercent='grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage \"%\"}''"
 		echo ""
 	} >>$fileAlias
 	;;
