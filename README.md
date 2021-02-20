@@ -1,5 +1,7 @@
 # **ALIASESJOSE**
 
+"PROJECT CURRENTLY **UNMAINTAINED**"
+
 **My aliases, shortcuts and scripts, all in one!**
 
 Shell script that adds several aliases to your '*~/bash_aliases*' file.
